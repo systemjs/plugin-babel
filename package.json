@@ -4,11 +4,11 @@
     "name": "systemjs/plugin-babel",
     "registry": "github",
     "dependencies": {
-      "babel": "^5.8.25",
-      "babel-runtime": "^5.8.25"
+      "babel": "^5.8.26",
+      "babel-runtime": "^5.8.26"
     },
     "peerDependencies": {
-      "core-js": "^1.2.0"
+      "core-js": "^1.2.1"
     }
   }
 }
