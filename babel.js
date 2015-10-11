@@ -1,6 +1,11 @@
 var babel = require('babel');
-var babelRuntimePath = System.normalizeSync('babel-runtime', module.id);
-var externalHelpersPath = System.normalizeSync('babel/external-helpers', module.id);
+var babelRuntimePath = stripBaseURL(System.normalizeSync('babel-runtime/', module.id));
+var externalHelpersPath = stripBaseURL(System.normalizeSync('babel/external-helpers', module.id));
+
+function stripBaseURL(path) {
+  if (path.substr(0, System.baseURL.length) == System.baseURL)
+    return path.substr(System.baseURL.length);
+}
 
 // disable SystemJS runtime detection
 System.loadedTranspilerRuntime_ = true;
@@ -13,7 +18,14 @@ function prepend(a, b) {
 }
 
 exports.translate = function(load) {
+  // set module format
+  // (in builder we output modules as esm)
+  if (!load.metadata.format)
+    load.metadata.format = this.builder ? 'esm' : 'register';
+
   var options = {
+    // also pending https://github.com/babel/babel/issues/2514
+    //modules: load.metadata.format == 'register' ? 'system' : 'ignore',
     modules: 'system',
     sourceMap: true,
     inputSourceMap: load.metadata.sourceMap,
@@ -23,7 +35,7 @@ exports.translate = function(load) {
     keepModuleIdExtensions: true,
     resolveModuleSource: function(m) {
       if (m.substr(0, 14) == 'babel-runtime/')
-        m = babelRuntimePath + m.substr(13);
+        m = babelRuntimePath + m.substr(14);
       return m;
     }
   };
@@ -31,22 +43,35 @@ exports.translate = function(load) {
   if (load.metadata.babelOptions)
     prepend(options, load.metadata.babelOptions);
 
-  options.plugins = options.plugins.concat(this.babelOptions && this.babelOptions.plugins || []);
-
   if (this.babelOptions)
     prepend(options, this.babelOptions);
 
   options.optional = options.optional || [];
-  options.optional.push('runtime');
+  options.blacklist = options.blacklist || [];
 
-  if (options.blacklist && options.blacklist.indexOf('runtime') != -1)
+  if (options.blacklist.indexOf('runtime') != -1) {
     options.externalHelpers = true;
+  }
+  else {
+    if (options.optional.indexOf('runtime') == -1)
+      options.optional.push('runtime');
+  }
 
   // add the externalHelpers as a dependency of this module
   if (options.externalHelpers)
     load.metadata.deps.push(externalHelpersPath);
 
+  if (load.metadata.format == 'esm' && options.optional.indexOf('optimisation.modules.system') == -1)
+    options.optional.push('optimisation.modules.system');
+
+  // in builder we output modules as esm
+  if (this.builder)
+    options.blacklist.push('es6.modules');
+
+
   // load any plugins configured
+  options.plugins = (options.plugins || []).concat(this.babelOptions && this.babelOptions.plugins || []);
+
   var loader = this;
   var pluginPromises = [];
 
@@ -83,10 +108,12 @@ exports.translate = function(load) {
     var output = babel.transform(load.source, options);
 
     load.metadata.sourceMap = output.map;
-    load.metadata.format = 'register';
 
     // __moduleName wrapping needed until we have a module context specification
-    return '(function(__moduleName){' + output.code + '\n})("' + load.name + '");';
+    if (loader.builder)
+      return output.code;
+    else
+      return '(function(__moduleName){' + output.code + '\n})("' + load.name + '");';
   });
 };
 
