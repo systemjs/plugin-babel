@@ -48,6 +48,7 @@ exports.translate = function(load) {
 
   options.optional = options.optional || [];
   options.blacklist = options.blacklist || [];
+  options.plugins = options.plugins || [];
 
   if (options.blacklist.indexOf('runtime') != -1) {
     options.externalHelpers = true;
@@ -67,10 +68,6 @@ exports.translate = function(load) {
   // in builder we output modules as esm
   if (this.builder)
     options.blacklist.push('es6.modules');
-
-
-  // load any plugins configured
-  options.plugins = (options.plugins || []).concat(this.babelOptions && this.babelOptions.plugins || []);
 
   var loader = this;
   var pluginPromises = [];
