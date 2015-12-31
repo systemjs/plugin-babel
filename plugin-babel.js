@@ -18,7 +18,7 @@ function stripBaseURL(path) {
 }
 
 // disable SystemJS runtime detection
-SystemJS._loader.loadedTranspilerRuntime_ = true;
+SystemJS._loader.loadedTranspilerRuntime = true;
 
 function prepend(a, b) {
   for (var p in b)
@@ -48,6 +48,10 @@ var defaultBabelOptions = {
 };
 
 exports.translate = function(load) {
+  // we don't transpile anything other than CommonJS or ESM
+  if (load.metadata.format == 'global' || load.metadata.format == 'amd' || load.metadata.format == 'json')
+    throw new TypeError('plugin-babel cannot transpile ' + load.metadata.format + ' modules. Ensure "' + load.name + '" is configured not to use this loader.');
+
   var loader = this;
 
   var babelOptions = {};
@@ -86,16 +90,21 @@ exports.translate = function(load) {
       presets.push(stage3);
 
     if (babelOptions.modularRuntime) {
+      if (load.metadata.format == 'cjs')
+        throw new TypeError('plugin-babel does not support modular runtime for CJS module transpilations.');
       presets.push(runtimeTransform);
     }
     else {
-      load.source = 'import * as babelHelpers from "' + externalHelpersPath + '";' + load.source;
+      if (load.metadata.format == 'cjs')
+        load.source = 'var babelHelpers = require("' + externalHelpersPath + '");' + load.source;
+      else
+        load.source = 'import * as babelHelpers from "' + externalHelpersPath + '";' + load.source;
       presets.push(externalHelpers);
     }
     
     if (babelOptions.es2015)
-      presets.push(loader.builder ? es2015 : es2015Register);
-    else 
+      presets.push((loader.builder || load.metadata.format == 'cjs') ? es2015 : es2015Register);
+    else
       presets.push(modulesRegister);
 
     if (babelOptions.presets)
