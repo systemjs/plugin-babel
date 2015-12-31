@@ -1,14 +1,20 @@
 {
-  "main": "babel",
-  "jspm": {
-    "name": "systemjs/plugin-babel",
-    "registry": "github",
-    "dependencies": {
-      "babel": "^5.8.26",
-      "babel-runtime": "^5.8.26"
-    },
-    "peerDependencies": {
-      "core-js": "^1.2.1"
+  "name": "systemjs/plugin-babel",
+  "main": "plugin-babel.js",
+  "registry": "github",
+  "jspmPackage": true,
+  "peerDependencies": {
+    "core-js": "^1.2.1"
+  },
+  "map": {
+    "systemjs-babel-build": {
+      "browser": "./systemjs-babel-browser.js",
+      "node": "./systemjs-babel-node.js"
+    }
+  },
+  "meta": {
+    "plugin-babel.js": {
+      "format": "cjs"
     }
   }
 }
