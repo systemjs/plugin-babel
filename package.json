@@ -13,7 +13,7 @@
     }
   },
   "meta": {
-    "plugin-babel.js": {
+    "./plugin-babel.js": {
       "format": "cjs"
     }
   }

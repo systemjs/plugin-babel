@@ -10,7 +10,7 @@ var externalHelpers = require('systemjs-babel-build').externalHelpers;
 var runtimeTransform = require('systemjs-babel-build').runtimeTransform;
 
 var babelRuntimePath = stripBaseURL(System.decanonicalize('babel-runtime/', module.id));
-var externalHelpersPath = stripBaseURL(System.decanonicalize('./babel-helpers.js', module.id));
+var externalHelpersPath = System.decanonicalize('./babel-helpers.js', module.id);
 
 function stripBaseURL(path) {
   if (path.substr(0, System.baseURL.length) == System.baseURL)
@@ -27,6 +27,10 @@ function prepend(a, b) {
   return a;
 }
 
+// NB pending http://phabricator.babeljs.io/T6904
+// the babel-helpers modular ESM can be used individually
+// currently with babel-rutime even a simple typeof pulls in a huge dep tree, which isn't ideal
+
 /*
  * babelOptions:
  *   modularRuntime: true / false (whether to use babel-runtime or babel/external-helpers respectively)
@@ -40,7 +44,7 @@ function prepend(a, b) {
  * babelOptions can be set at SystemJS.babelOptions OR on the metadata object for a given module
  */
 var defaultBabelOptions = {
-  modularRuntime: true,
+  modularRuntime: false,
   sourceMaps: true,
   es2015: true,
   stage3: true,
@@ -98,7 +102,7 @@ exports.translate = function(load) {
       if (load.metadata.format == 'cjs')
         load.source = 'var babelHelpers = require("' + externalHelpersPath + '");' + load.source;
       else
-        load.source = 'import * as babelHelpers from "' + externalHelpersPath + '";' + load.source;
+        load.source = 'import babelHelpers from "' + externalHelpersPath + '";' + load.source;
       presets.push(externalHelpers);
     }
     
