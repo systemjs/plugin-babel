@@ -10,6 +10,7 @@ var externalHelpers = require('systemjs-babel-build').externalHelpers;
 var runtimeTransform = require('systemjs-babel-build').runtimeTransform;
 
 var babelRuntimePath = stripBaseURL(System.decanonicalize('babel-runtime/', module.id));
+var modularHelpersPath = stripBaseURL(System.decanonicalize('./babel-helpers/', module.id));
 var externalHelpersPath = System.decanonicalize('./babel-helpers.js', module.id);
 
 function stripBaseURL(path) {
@@ -27,10 +28,6 @@ function prepend(a, b) {
   return a;
 }
 
-// NB pending http://phabricator.babeljs.io/T6904
-// the babel-helpers modular ESM can be used individually
-// currently with babel-rutime even a simple typeof pulls in a huge dep tree, which isn't ideal
-
 /*
  * babelOptions:
  *   modularRuntime: true / false (whether to use babel-runtime or babel/external-helpers respectively)
@@ -44,7 +41,7 @@ function prepend(a, b) {
  * babelOptions can be set at SystemJS.babelOptions OR on the metadata object for a given module
  */
 var defaultBabelOptions = {
-  modularRuntime: false,
+  modularRuntime: true,
   sourceMaps: true,
   es2015: true,
   stage3: true,
@@ -136,7 +133,10 @@ exports.translate = function(load) {
       code: true,
       ast: false,
       resolveModuleSource: function(m) {
-        if (m.substr(0, 14) == 'babel-runtime/') {
+        if (m.substr(0, 22) == 'babel-runtime/helpers/') {
+          m = modularHelpersPath + m.substr(22);
+        }
+        else if (m.substr(0, 14) == 'babel-runtime/') {
           if (babelRuntimePath == 'babel-runtime/')
             throw new Error('The babel-runtime module must be mapped to support modular helpers and builtins. If using jspm run jspm install npm:babel-runtime.');
           m = babelRuntimePath + m.substr(14);

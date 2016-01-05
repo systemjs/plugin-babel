@@ -36,7 +36,8 @@ import spread from 'babel-plugin-transform-es2015-spread';
 import parameters from 'babel-plugin-transform-es2015-parameters';
 import destructuring from 'babel-plugin-transform-es2015-destructuring';
 import blockScoping from 'babel-plugin-transform-es2015-block-scoping';
-import typeofSymbol from 'babel-plugin-transform-es2015-typeof-symbol';
+// removed as this pulls in too much of core-js
+// import typeofSymbol from 'babel-plugin-transform-es2015-typeof-symbol';
 import regenerator from 'babel-plugin-transform-regenerator';
 
 let es2015Plugins = [
@@ -57,7 +58,7 @@ let es2015Plugins = [
   parameters,
   destructuring,
   blockScoping,
-  typeofSymbol
+  // typeofSymbol
 ];
 
 let regeneratorPlugin = [regenerator, { async: false, asyncGenerators: false }];
