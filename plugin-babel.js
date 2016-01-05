@@ -54,6 +54,7 @@ exports.translate = function(load) {
     throw new TypeError('plugin-babel cannot transpile ' + load.metadata.format + ' modules. Ensure "' + load.name + '" is configured not to use this loader.');
 
   var loader = this;
+  var pluginLoader = loader.pluginLoader || loader;
 
   var babelOptions = {};
 
@@ -71,13 +72,13 @@ exports.translate = function(load) {
   if (babelOptions.presets)
     babelOptions.presets.forEach(function(preset) {
       if (typeof preset == 'string')
-        pluginAndPresetModuleLoads.push(loader['import'](preset, module.id));
+        pluginAndPresetModuleLoads.push(pluginLoader['import'](preset, module.id));
     });
 
   if (babelOptions.plugins)
     babelOptions.plugins.forEach(function(plugin) {
       if (typeof plugin == 'string')
-        pluginAndPresetModuleLoads.push(loader['import'](plugin, module.id));
+        pluginAndPresetModuleLoads.push(pluginLoader['import'](plugin, module.id));
     });
 
   return Promise.all(pluginAndPresetModuleLoads)
