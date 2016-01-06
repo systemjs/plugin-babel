@@ -1,5 +1,5 @@
 {
-  "name": "plugin-babel",
+  "name": "systemjs-plugin-babel",
   "version": "0.0.1",
   "registry": "npm",
   "jspmPackage": true,

@@ -14,8 +14,8 @@ The plugin can be used in SystemJS with the following configuration:
 ```javascript
 SystemJS.config({
   map: {
-    'plugin-babel': 'path/to/plugin-babel/plugin-babel.js',
-    'systemjs-babel-build': 'path/to/plugin-babel/systemjs-babel-browser.js'
+    'plugin-babel': 'path/to/systemjs-plugin-babel/plugin-babel.js',
+    'systemjs-babel-build': 'path/to/systemjs-plugin-babel/systemjs-babel-browser.js'
   },
   transpiler: 'plugin-babel'
 });
@@ -42,7 +42,7 @@ To build with SystemJS builder manually, use the following build configuration:
 ```javascript
 builder.config({
   map: {
-    'systemjs-babel-build': 'path/to/plugin-babel/systemjs-babel-node.js'
+    'systemjs-babel-build': 'path/to/systemjs-plugin-babel/systemjs-babel-node.js'
   }
 });
 builder.bundle('app.js', 'out-bundle.js'); // create a named bundle
