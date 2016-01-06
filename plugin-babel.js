@@ -139,7 +139,7 @@ exports.translate = function(load) {
       ast: false,
       resolveModuleSource: function(m) {
         if (m.substr(0, 22) == 'babel-runtime/helpers/') {
-          m = modularHelpersPath + m.substr(22);
+          m = modularHelpersPath + m.substr(22) + '.js';
         }
         else if (m == 'babel-runtime/regenerator') {
           m = regeneratorRuntimePath;
@@ -147,7 +147,7 @@ exports.translate = function(load) {
         else if (m.substr(0, 14) == 'babel-runtime/') {
           if (babelRuntimePath == 'babel-runtime/')
             throw new Error('The babel-runtime module must be mapped to support modular helpers and builtins. If using jspm run jspm install npm:babel-runtime.');
-          m = babelRuntimePath + m.substr(14);
+          m = babelRuntimePath + m.substr(14) + '.js';
         }
         return m;
       }

@@ -1,11 +1,8 @@
 {
-  "name": "systemjs/plugin-babel",
-  "main": "plugin-babel.js",
-  "registry": "github",
+  "name": "plugin-babel",
+  "version": "0.0.1",
+  "registry": "npm",
   "jspmPackage": true,
-  "peerDependencies": {
-    "core-js": "^1.2.1"
-  },
   "map": {
     "systemjs-babel-build": {
       "browser": "./systemjs-babel-browser.js",
@@ -16,5 +13,12 @@
     "./plugin-babel.js": {
       "format": "cjs"
     }
-  }
+  },
+  "files": [
+    "babel-helpers", 
+    "babel-helpers.js", 
+    "regenerator-runtime.js", 
+    "systemjs-babel-browser.js", 
+    "systemjs-babel-node.js"
+  ]
 }
