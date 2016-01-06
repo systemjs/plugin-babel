@@ -13497,7 +13497,7 @@ $__System.registerDynamic("b8", ["9", "b7", "3"], true, function($__require, exp
             return file.addImport(RUNTIME_MODULE_NAME + "/helpers/" + name, "default", name);
           }
         });
-        this.setDynamic("regeneratorIdentifier", function() {
+        file.setDynamic("regeneratorIdentifier", function() {
           return file.addImport(RUNTIME_MODULE_NAME + "/regenerator", "default", "regeneratorRuntime");
         });
       },
@@ -13509,7 +13509,7 @@ $__System.registerDynamic("b8", ["9", "b7", "3"], true, function($__require, exp
           var parent = path.parent;
           var scope = path.scope;
           if (node.name === "regeneratorRuntime") {
-            path.replaceWith(state.get("regeneratorIdentifier"));
+            path.replaceWith(state.file.get("regeneratorIdentifier"));
             return;
           }
           if (state.opts.polyfill === false)
@@ -38839,8 +38839,8 @@ $__System.registerDynamic("f8", ["4", "5", "3"], true, function($__require, expo
   exports.isReference = isReference;
   var _babelTypes = $__require('5');
   var t = _interopRequireWildcard(_babelTypes);
-  function runtimeProperty(name) {
-    return t.memberExpression(t.identifier("regeneratorRuntime"), t.identifier(name), false);
+  function runtimeProperty(name, regeneratorIdentifier) {
+    return t.memberExpression(regeneratorIdentifier || t.identifier("regeneratorRuntime"), t.identifier(name), false);
   }
   function isReference(path) {
     return path.isReferenced() || path.parentPath.isAssignmentExpression({left: path.node});
@@ -39005,7 +39005,7 @@ $__System.registerDynamic("1a0", ["9", "4", "@node/assert", "5", "f3", "f5", "f8
         if (outerBody.length > 0) {
           bodyBlockPath.node.body = innerBody;
         }
-        var outerFnExpr = getOuterFnExpr(path);
+        var outerFnExpr = getOuterFnExpr(path, state);
         t.assertIdentifier(node.id);
         var innerFnId = t.identifier(node.id.name + "$");
         var vars = _hoist.hoist(path);
@@ -39024,7 +39024,7 @@ $__System.registerDynamic("1a0", ["9", "4", "@node/assert", "5", "f3", "f5", "f8
         if (tryLocsList) {
           wrapArgs.push(tryLocsList);
         }
-        var wrapCall = t.callExpression(util.runtimeProperty(node.async ? "async" : "wrap"), wrapArgs);
+        var wrapCall = t.callExpression(util.runtimeProperty(node.async ? "async" : "wrap", state.file.get("regeneratorIdentifier")), wrapArgs);
         outerBody.push(t.returnStatement(wrapCall));
         node.body = t.blockStatement(outerBody);
         var wasGeneratorFunction = node.generator;
@@ -39035,10 +39035,10 @@ $__System.registerDynamic("1a0", ["9", "4", "@node/assert", "5", "f3", "f5", "f8
           node.async = false;
         }
         if (wasGeneratorFunction && t.isExpression(node)) {
-          path.replaceWith(t.callExpression(util.runtimeProperty("mark"), [node]));
+          path.replaceWith(t.callExpression(util.runtimeProperty("mark", state.file.get("regeneratorIdentifier")), [node]));
         }
       }}};
-  function getOuterFnExpr(funPath) {
+  function getOuterFnExpr(funPath, state) {
     var node = funPath.node;
     t.assertFunction(node);
     if (!node.id) {
@@ -39051,7 +39051,7 @@ $__System.registerDynamic("1a0", ["9", "4", "@node/assert", "5", "f3", "f5", "f8
       if (!pp) {
         return node.id;
       }
-      var markDecl = getRuntimeMarkDecl(pp);
+      var markDecl = getRuntimeMarkDecl(pp, state);
       var markedArray = markDecl.declarations[0].id;
       var funDeclIdArray = markDecl.declarations[0].init.callee.object;
       t.assertArrayExpression(funDeclIdArray);
@@ -39061,14 +39061,14 @@ $__System.registerDynamic("1a0", ["9", "4", "@node/assert", "5", "f3", "f5", "f8
     }
     return node.id;
   }
-  function getRuntimeMarkDecl(blockPath) {
+  function getRuntimeMarkDecl(blockPath, state) {
     var block = blockPath.node;
     _assert2["default"].ok(Array.isArray(block.body));
     var info = getMarkInfo(block);
     if (info.decl) {
       return info.decl;
     }
-    info.decl = t.variableDeclaration("var", [t.variableDeclarator(blockPath.scope.generateUidIdentifier("marked"), t.callExpression(t.memberExpression(t.arrayExpression([]), t.identifier("map"), false), [util.runtimeProperty("mark")]))]);
+    info.decl = t.variableDeclaration("var", [t.variableDeclarator(blockPath.scope.generateUidIdentifier("marked"), t.callExpression(t.memberExpression(t.arrayExpression([]), t.identifier("map"), false), [util.runtimeProperty("mark", state.file.get("regeneratorIdentifier"))]))]);
     blockPath.unshiftContainer("body", info.decl);
     return info.decl;
   }
@@ -39103,7 +39103,7 @@ $__System.registerDynamic("1a0", ["9", "4", "@node/assert", "5", "f3", "f5", "f8
     },
     AwaitExpression: function AwaitExpression(path) {
       var argument = path.node.argument;
-      path.replaceWith(t.yieldExpression(t.callExpression(util.runtimeProperty("awrap"), [argument]), false));
+      path.replaceWith(t.yieldExpression(t.callExpression(util.runtimeProperty("awrap", state.file.get("regeneratorIdentifier")), [argument]), false));
     }
   };
   global.define = __define;

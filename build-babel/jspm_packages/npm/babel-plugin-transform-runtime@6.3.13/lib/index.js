@@ -27,7 +27,7 @@ exports["default"] = function (_ref) {
         }
       });
 
-      this.setDynamic("regeneratorIdentifier", function () {
+      file.setDynamic("regeneratorIdentifier", function () {
         return file.addImport(RUNTIME_MODULE_NAME + "/regenerator", "default", "regeneratorRuntime");
       });
     },
@@ -41,7 +41,7 @@ exports["default"] = function (_ref) {
         var scope = path.scope;
 
         if (node.name === "regeneratorRuntime") {
-          path.replaceWith(state.get("regeneratorIdentifier"));
+          path.replaceWith(state.file.get("regeneratorIdentifier"));
           return;
         }
 

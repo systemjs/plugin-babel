@@ -9,13 +9,17 @@ var stage3 = require('systemjs-babel-build').presetStage3;
 var externalHelpers = require('systemjs-babel-build').externalHelpers;
 var runtimeTransform = require('systemjs-babel-build').runtimeTransform;
 
-var babelRuntimePath = stripBaseURL(System.decanonicalize('babel-runtime/', module.id));
-var modularHelpersPath = stripBaseURL(System.decanonicalize('./babel-helpers/', module.id));
+var babelRuntimePath = System.decanonicalize('babel-runtime/', module.id);
+var modularHelpersPath = System.decanonicalize('./babel-helpers/', module.id);
 var externalHelpersPath = System.decanonicalize('./babel-helpers.js', module.id);
+var regeneratorRuntimePath = System.decanonicalize('./regenerator-runtime.js', module.id);
 
-function stripBaseURL(path) {
-  if (path.substr(0, System.baseURL.length) == System.baseURL)
-    return path.substr(System.baseURL.length);
+// in builds we want to embed canonical names to helpers
+if (System.getCanonicalName) {
+  babelRuntimePath = System.getCanonicalName(babelRuntimePath);
+  modularHelpersPath = System.getCanonicalName(modularHelpersPath);
+  externalHelpersPath = System.getCanonicalName(externalHelpersPath);
+  regeneratorRuntimePath = System.getCanonicalName(regeneratorRuntimePath);
 }
 
 // disable SystemJS runtime detection
@@ -136,6 +140,9 @@ exports.translate = function(load) {
       resolveModuleSource: function(m) {
         if (m.substr(0, 22) == 'babel-runtime/helpers/') {
           m = modularHelpersPath + m.substr(22);
+        }
+        else if (m == 'babel-runtime/regenerator') {
+          m = regeneratorRuntimePath;
         }
         else if (m.substr(0, 14) == 'babel-runtime/') {
           if (babelRuntimePath == 'babel-runtime/')
