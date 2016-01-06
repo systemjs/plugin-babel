@@ -97,7 +97,7 @@ exports.translate = function(load) {
 
     if (babelOptions.modularRuntime) {
       if (load.metadata.format == 'cjs')
-        throw new TypeError('plugin-babel does not support modular runtime for CJS module transpilations.');
+        throw new TypeError('plugin-babel does not support modular runtime for CJS module transpilations. Set babelOptions.modularRuntime: false if needed.');
       presets.push(runtimeTransform);
     }
     else {
