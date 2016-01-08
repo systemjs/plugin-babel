@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "registry": "npm",
   "jspmPackage": true,
+  "main": "plugin-babel.js",
   "map": {
     "systemjs-babel-build": {
       "browser": "./systemjs-babel-browser.js",
