@@ -83,6 +83,8 @@ exports.translate = function(load) {
     babelOptions.plugins.forEach(function(plugin) {
       if (typeof plugin == 'string')
         pluginAndPresetModuleLoads.push(pluginLoader['import'](plugin, module.id));
+      else if (plugin instanceof Array && typeof plugin[0] == 'string')
+        pluginAndPresetModuleLoads.push(pluginLoader['import'](plugin[0], module.id));
     });
 
   return Promise.all(pluginAndPresetModuleLoads)
@@ -125,6 +127,8 @@ exports.translate = function(load) {
       babelOptions.plugins.forEach(function(plugin) {
         if (typeof plugin == 'string')
           plugins.push(pluginAndPresetModules[curPluginOrPresetModule++]);
+        else if (plugin instanceof Array && typeof plugin[0] == 'string')
+          plugins.push([pluginAndPresetModules[curPluginOrPresetModule++], plugin[1]]);
         else
           plugins.push(plugin);
       });
