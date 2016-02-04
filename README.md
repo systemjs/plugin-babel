@@ -80,6 +80,20 @@ SystemJS.config({
 
 This way JSX support or other features can be included as needed.
 
+You can pass options to Babel plugins the same way as in Node, without creating custom presets.
+
+```javascript
+SystemJS.config({
+  babelOptions: {
+    plugins: [
+      [ "react-transform", {
+        "transforms": [{"transform": "react-transform-jspm-hmr"}]
+      }]
+    ]
+  }
+});
+```
+
 LICENSE
 ---
 
