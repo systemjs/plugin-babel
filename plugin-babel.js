@@ -134,6 +134,7 @@ exports.translate = function(load) {
       });
 
     var output = babel.transform(load.source, {
+      babelrc: false,
       plugins: plugins,
       presets: presets,
       filename: load.address,
