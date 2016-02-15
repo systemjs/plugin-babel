@@ -112,7 +112,7 @@ exports.translate = function(load) {
     
     if (babelOptions.es2015)
       presets.push((loader.builder || load.metadata.format == 'cjs') ? es2015 : es2015Register);
-    else
+    else if (loader.builder || load.metadata.format == 'cjs')
       presets.push(modulesRegister);
 
     if (babelOptions.presets)
