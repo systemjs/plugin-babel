@@ -14,6 +14,11 @@ var modularHelpersPath = System.decanonicalize('./babel-helpers/', module.id);
 var externalHelpersPath = System.decanonicalize('./babel-helpers.js', module.id);
 var regeneratorRuntimePath = System.decanonicalize('./regenerator-runtime.js', module.id);
 
+if (babelRuntimePath.substr(babelRuntimePath.length - 3, 3) == '.js')
+  babelRuntimePath = babelRuntimePath.substr(0, babelRuntimePath.length - 3);
+if (modularHelpersPath.substr(modularHelpersPath.length - 3, 3) == '.js')
+  modularHelpersPath = modularHelpersPath.substr(0, modularHelpersPath.length - 3);
+
 // in builds we want to embed canonical names to helpers
 if (System.getCanonicalName) {
   babelRuntimePath = System.getCanonicalName(babelRuntimePath);
