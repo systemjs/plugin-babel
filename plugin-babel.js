@@ -112,7 +112,7 @@ exports.translate = function(load) {
     
     if (babelOptions.es2015)
       presets.push((loader.builder || load.metadata.format == 'cjs') ? es2015 : es2015Register);
-    else if (loader.builder || load.metadata.format == 'cjs')
+    else if (!(loader.builder || load.metadata.format == 'cjs'))
       presets.push(modulesRegister);
 
     if (babelOptions.presets)
@@ -138,10 +138,10 @@ exports.translate = function(load) {
       plugins: plugins,
       presets: presets,
       filename: load.address,
-      sourceMap: babelOptions.sourceMap,
+      sourceMaps: babelOptions.sourceMaps,
       inputSourceMap: load.metadata.sourceMap,
       code: true,
-      ast: false,
+      ast: true,
       resolveModuleSource: function(m) {
         if (m.substr(0, 22) == 'babel-runtime/helpers/') {
           m = modularHelpersPath + m.substr(22) + '.js';
