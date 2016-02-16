@@ -25,6 +25,7 @@
       "babel-plugin-transform-es2015-unicode-regex": "npm:babel-plugin-transform-es2015-unicode-regex@^6.3.13",
       "babel-plugin-transform-regenerator": "npm:babel-plugin-transform-regenerator@^6.3.18",
       "babel-plugin-transform-runtime": "npm:babel-plugin-transform-runtime@^6.3.13",
+      "babel-preset-stage-2": "npm:babel-preset-stage-2@^6.5.0",
       "babel-preset-stage-3": "npm:babel-preset-stage-3@^6.3.13",
       "core-js": "npm:core-js@^1.2.6",
       "regenerator": "github:facebook/regenerator@^0.8.42"
