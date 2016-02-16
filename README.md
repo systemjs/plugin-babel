@@ -25,7 +25,7 @@ The plugin can also be configured as a `loader` through metadata in SystemJS.
 
 ### jspm
 
-> This plugin is compatible with jspm 0.17 beta, but is not supported in jspm 0.16.
+**This plugin is compatible with jspm 0.17 beta, but is not supported in jspm 0.16.**
 
 ```
 jspm install plugin-babel

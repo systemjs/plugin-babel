@@ -1,4 +1,4 @@
-export default (function () {
+export default function () {
   var REACT_ELEMENT_TYPE = typeof Symbol === "function" && Symbol.for && Symbol.for("react.element") || 0xeac7;
   return function createRawReactElement(type, props, key, children) {
     var defaultProps = type && type.defaultProps;
@@ -39,4 +39,4 @@ export default (function () {
       _owner: null
     };
   };
-})();
+}();

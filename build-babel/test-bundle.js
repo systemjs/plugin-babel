@@ -1,6 +1,6 @@
 'use strict';
 
-var _regeneratorRuntime = (function (module) {
+var _regeneratorRuntime = function (module) {
   /**
    * Copyright (c) 2014, Facebook, Inc.
    * All rights reserved.
@@ -11,7 +11,7 @@ var _regeneratorRuntime = (function (module) {
    * the same directory.
    */
 
-  !(function (global) {
+  !function (global) {
     "use strict";
 
     var hasOwn = Object.prototype.hasOwnProperty;
@@ -633,13 +633,13 @@ var _regeneratorRuntime = (function (module) {
         return ContinueSentinel;
       }
     };
-  })(
+  }(
   // Among the various tricks for obtaining a reference to the global
   // object, this seems to be the most reliable technique that does not
   // use indirect eval (which violates Content Security Policy).
   typeof global === "object" ? global : typeof window === "object" ? window : typeof self === "object" ? self : this);
   return module.exports;
-})({ exports: {} });
+}({ exports: {} });
 
 var _asyncToGenerator = (function (fn) {
   return function () {
@@ -657,20 +657,20 @@ var _asyncToGenerator = (function (fn) {
         if (info.done) {
           resolve(value);
         } else {
-          Promise.resolve(value).then(function (value) {
-            step("next", value);
+          return Promise.resolve(value).then(function (value) {
+            return step("next", value);
           }, function (err) {
-            step("throw", err);
+            return step("throw", err);
           });
         }
       }
 
-      step("next");
+      return step("next");
     });
   };
 })
 
-var p = (function () {
+var p = function () {
   var ref = _asyncToGenerator(_regeneratorRuntime.mark(function _callee() {
     return _regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
@@ -698,6 +698,6 @@ var p = (function () {
   return function p() {
     return ref.apply(this, arguments);
   };
-})();
+}();
 
 exports.p = p;

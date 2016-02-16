@@ -40,12 +40,11 @@ function prepend(a, b) {
 /*
  * babelOptions:
  *   modularRuntime: true / false (whether to use babel-runtime or babel/external-helpers respectively)
- *   sourceMaps: true / false (defaults to true) Not working pending https://phabricator.babeljs.io/T6903
+ *   sourceMaps: true / false (defaults to true)
  *   es2015: true / false (defaults to true)
  *   stage3: true / false (defaults to true)
  *   plugins: array of custom plugins (objects or module name strings)
  *   presets: array of custom presets (objects or module name strings)
- *   moduleName: true / false (whether to set __moduleName, defaults to false) needed pending https://phabricator.babeljs.io/T6899
  *
  * babelOptions can be set at SystemJS.babelOptions OR on the metadata object for a given module
  */
@@ -53,8 +52,7 @@ var defaultBabelOptions = {
   modularRuntime: true,
   sourceMaps: true,
   es2015: true,
-  stage3: true,
-  moduleName: false
+  stage3: true
 };
 
 exports.translate = function(load) {
@@ -174,10 +172,7 @@ exports.translate = function(load) {
 
     load.metadata.sourceMap = output.map;
 
-    if (loader.builder || !babelOptions.moduleName)
-      return output.code;
-    else
-      return '(function(__moduleName){' + output.code + '\n})("' + load.name + '");';
+    return output.code;
   });
 };
 

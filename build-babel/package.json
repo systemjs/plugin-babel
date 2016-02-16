@@ -33,34 +33,31 @@
       "traceur": "github:jmcriffey/bower-traceur@^0.0.93"
     },
     "peerDependencies": {
-      "assert": "npm:assert@^1.3.0",
-      "buffer": "npm:buffer@^3.5.3",
+      "assert": "github:jspm/nodelibs-assert@^0.2.0-alpha",
+      "buffer": "github:jspm/nodelibs-buffer@^0.2.0-alpha",
+      "child_process": "github:jspm/nodelibs-child_process@^0.2.0-alpha",
       "events": "npm:events@^1.1.0",
-      "http": "npm:stream-http@^2.0.2",
+      "fs": "github:jspm/nodelibs-fs@^0.2.0-alpha",
+      "http": "github:jspm/nodelibs-http@^0.2.0-alpha",
+      "module": "github:jspm/nodelibs-module@^0.2.0-alpha",
+      "net": "github:jspm/nodelibs-net@^0.2.0-alpha",
       "nodelibs": "github:jspm/nodelibs@^0.1.0",
       "os": "npm:os-browserify@^0.2.0",
-      "path": "npm:path-browserify@^0.0.0",
-      "stream": "npm:stream-browserify@^2.0.1",
+      "path": "github:jspm/nodelibs-path@^0.2.0-alpha",
+      "process": "github:jspm/nodelibs-process@^0.2.0-alpha",
+      "stream": "github:jspm/nodelibs-stream@^0.2.0-alpha",
       "tty": "npm:tty-browserify@^0.0.0",
-      "url": "npm:url@^0.11.0",
-      "util": "npm:util@^0.10.3"
+      "url": "github:jspm/nodelibs-url@^0.2.0-alpha",
+      "util": "github:jspm/nodelibs-util@^0.2.0-alpha"
     },
     "overrides": {
-      "npm:assert@1.3.0": {
-        "map": {
-          "./assert.js": {
-            "node": "@node/assert"
+      "github:jmcriffey/bower-traceur@0.0.93": {
+        "format": "global",
+        "meta": {
+          "traceur.js": {
+            "exports": "traceur"
           }
         }
-      },
-      "npm:babel-runtime@5.8.34": {
-        "main": false,
-        "dependencies": {}
-      },
-      "npm:base64-js@0.0.8": {
-        "ignore": [
-          "bench"
-        ]
       },
       "npm:events@1.1.0": {
         "map": {
@@ -73,13 +70,6 @@
         "ignore": [
           "test.js"
         ]
-      },
-      "npm:path-browserify@0.0.0": {
-        "map": {
-          "./index.js": {
-            "node": "@node/path"
-          }
-        }
       },
       "npm:punycode@1.3.2": {
         "map": {
@@ -102,7 +92,7 @@
           }
         }
       },
-      "npm:stream-http@2.0.2": {
+      "npm:stream-http@2.1.1": {
         "map": {
           "./index.js": {
             "node": "@node/http"
@@ -127,17 +117,6 @@
         "map": {
           "./url.js": {
             "node": "@node/url"
-          }
-        }
-      },
-      "npm:util@0.10.3": {
-        "map": {
-          "./util.js": {
-            "node": "@node/util"
-          },
-          "./index.js": {
-            "node": "@node/util",
-            "~node": "./util.js"
           }
         }
       }

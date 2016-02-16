@@ -85,7 +85,7 @@ exports.visitor = {
         bodyBlockPath.node.body = innerBody;
       }
 
-      var outerFnExpr = getOuterFnExpr(path, state);
+      var outerFnExpr = getOuterFnExpr(path);
       // Note that getOuterFnExpr has the side-effect of ensuring that the
       // function has a name (so node.id will always be an Identifier), even
       // if a temporary name has to be synthesized.
@@ -137,6 +137,11 @@ exports.visitor = {
       if (wasGeneratorFunction && t.isExpression(node)) {
         path.replaceWith(t.callExpression(util.runtimeProperty("mark", state.file.get("regeneratorIdentifier")), [node]));
       }
+
+      // Generators are processed in 'exit' handlers so that regenerator only has to run on
+      // an ES5 AST, but that means traversal will not pick up newly inserted references
+      // to things like 'regeneratorRuntime'. To avoid this, we explicitly requeue.
+      path.requeue();
     }
   }
 };
@@ -145,7 +150,7 @@ exports.visitor = {
 // used to refer reliably to the function object from inside the function.
 // This expression is essentially a replacement for arguments.callee, with
 // the key advantage that it works in strict mode.
-function getOuterFnExpr(funPath, state) {
+function getOuterFnExpr(funPath) {
   var node = funPath.node;
   t.assertFunction(node);
 
@@ -165,7 +170,7 @@ function getOuterFnExpr(funPath, state) {
       return node.id;
     }
 
-    var markDecl = getRuntimeMarkDecl(pp, state);
+    var markDecl = getRuntimeMarkDecl(pp);
     var markedArray = markDecl.declarations[0].id;
     var funDeclIdArray = markDecl.declarations[0].init.callee.object;
     t.assertArrayExpression(funDeclIdArray);
@@ -179,7 +184,7 @@ function getOuterFnExpr(funPath, state) {
   return node.id;
 }
 
-function getRuntimeMarkDecl(blockPath, state) {
+function getRuntimeMarkDecl(blockPath) {
   var block = blockPath.node;
   _assert2["default"].ok(Array.isArray(block.body));
 
@@ -239,7 +244,7 @@ var awaitVisitor = {
   },
 
   AwaitExpression: function AwaitExpression(path) {
-    // Convert await and await* expressions to yield expressions.
+    // Convert await expressions to yield expressions.
     var argument = path.node.argument;
 
     // Transforming `await x` to `yield regeneratorRuntime.awrap(x)`
