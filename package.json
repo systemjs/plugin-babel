@@ -1,6 +1,6 @@
 {
   "name": "systemjs-plugin-babel",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "registry": "npm",
   "jspmPackage": true,
   "main": "plugin-babel.js",
