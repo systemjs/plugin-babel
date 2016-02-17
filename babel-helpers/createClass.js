@@ -1,4 +1,4 @@
-export default function () {
+export default (function () {
   function defineProperties(target, props) {
     for (var i = 0; i < props.length; i++) {
       var descriptor = props[i];
@@ -14,4 +14,4 @@ export default function () {
     if (staticProps) defineProperties(Constructor, staticProps);
     return Constructor;
   };
-}();
+})();

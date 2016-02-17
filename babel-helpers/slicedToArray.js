@@ -1,4 +1,4 @@
-export default function () {
+export default (function () {
   function sliceIterator(arr, i) {
     var _arr = [];
     var _n = true;
@@ -34,4 +34,4 @@ export default function () {
       throw new TypeError("Invalid attempt to destructure non-iterable instance");
     }
   };
-}();
+})();
