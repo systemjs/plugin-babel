@@ -10,19 +10,16 @@ var stage2 = require('systemjs-babel-build').presetStage2;
 var externalHelpers = require('systemjs-babel-build').externalHelpers;
 var runtimeTransform = require('systemjs-babel-build').runtimeTransform;
 
-var babelRuntimePath = System.decanonicalize('babel-runtime/', module.id);
+var babelRuntimePath;
 var modularHelpersPath = System.decanonicalize('./babel-helpers/', module.id);
 var externalHelpersPath = System.decanonicalize('./babel-helpers.js', module.id);
 var regeneratorRuntimePath = System.decanonicalize('./regenerator-runtime.js', module.id);
 
-if (babelRuntimePath.substr(babelRuntimePath.length - 3, 3) == '.js')
-  babelRuntimePath = babelRuntimePath.substr(0, babelRuntimePath.length - 3);
 if (modularHelpersPath.substr(modularHelpersPath.length - 3, 3) == '.js')
   modularHelpersPath = modularHelpersPath.substr(0, modularHelpersPath.length - 3);
 
 // in builds we want to embed canonical names to helpers
 if (System.getCanonicalName) {
-  babelRuntimePath = System.getCanonicalName(babelRuntimePath);
   modularHelpersPath = System.getCanonicalName(modularHelpersPath);
   externalHelpersPath = System.getCanonicalName(externalHelpersPath);
   regeneratorRuntimePath = System.getCanonicalName(regeneratorRuntimePath);
@@ -159,8 +156,15 @@ exports.translate = function(load) {
           m = regeneratorRuntimePath;
         }
         else if (m.substr(0, 14) == 'babel-runtime/') {
-          if (babelRuntimePath == 'babel-runtime/')
-            throw new Error('The babel-runtime module must be mapped to support modular helpers and builtins. If using jspm run jspm install npm:babel-runtime.');
+          if (!babelRuntimePath) {
+            babelRuntimePath = System.decanonicalize('babel-runtime/', module.id);
+            if (babelRuntimePath.substr(babelRuntimePath.length - 3, 3) == '.js')
+              babelRuntimePath = babelRuntimePath.substr(0, babelRuntimePath.length - 3);
+            if (loader.getCanonicalName)
+              babelRuntimePath = loader.getCanonicalName(babelRuntimePath);
+            if (babelRuntimePath == 'babel-runtime/')
+              throw new Error('The babel-runtime module must be mapped to support modular helpers and builtins. If using jspm run jspm install npm:babel-runtime.');
+          }
           m = babelRuntimePath + m.substr(14) + '.js';
         }
         return m;
