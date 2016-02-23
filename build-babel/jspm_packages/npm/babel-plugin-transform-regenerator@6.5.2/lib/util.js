@@ -20,8 +20,8 @@ var _babelTypes = require("babel-types");
 
 var t = _interopRequireWildcard(_babelTypes);
 
-function runtimeProperty(name, regeneratorIdentifier) {
-  return t.memberExpression(regeneratorIdentifier || t.identifier("regeneratorRuntime"), t.identifier(name), false);
+function runtimeProperty(name) {
+  return t.memberExpression(t.identifier("regeneratorRuntime"), t.identifier(name), false);
 }
 
 function isReference(path) {

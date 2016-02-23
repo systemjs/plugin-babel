@@ -120,7 +120,7 @@ exports.visitor = {
         wrapArgs.push(tryLocsList);
       }
 
-      var wrapCall = t.callExpression(util.runtimeProperty(node.async ? "async" : "wrap", state.file.get("regeneratorIdentifier")), wrapArgs);
+      var wrapCall = t.callExpression(util.runtimeProperty(node.async ? "async" : "wrap"), wrapArgs);
 
       outerBody.push(t.returnStatement(wrapCall));
       node.body = t.blockStatement(outerBody);
@@ -135,7 +135,7 @@ exports.visitor = {
       }
 
       if (wasGeneratorFunction && t.isExpression(node)) {
-        path.replaceWith(t.callExpression(util.runtimeProperty("mark", state.file.get("regeneratorIdentifier")), [node]));
+        path.replaceWith(t.callExpression(util.runtimeProperty("mark"), [node]));
       }
 
       // Generators are processed in 'exit' handlers so that regenerator only has to run on
@@ -193,7 +193,7 @@ function getRuntimeMarkDecl(blockPath) {
     return info.decl;
   }
 
-  info.decl = t.variableDeclaration("var", [t.variableDeclarator(blockPath.scope.generateUidIdentifier("marked"), t.callExpression(t.memberExpression(t.arrayExpression([]), t.identifier("map"), false), [util.runtimeProperty("mark", state.file.get("regeneratorIdentifier"))]))]);
+  info.decl = t.variableDeclaration("var", [t.variableDeclarator(blockPath.scope.generateUidIdentifier("marked"), t.callExpression(t.memberExpression(t.arrayExpression([]), t.identifier("map"), false), [util.runtimeProperty("mark")]))]);
 
   blockPath.unshiftContainer("body", info.decl);
 
@@ -250,6 +250,6 @@ var awaitVisitor = {
     // Transforming `await x` to `yield regeneratorRuntime.awrap(x)`
     // causes the argument to be wrapped in such a way that the runtime
     // can distinguish between awaited and merely yielded values.
-    path.replaceWith(t.yieldExpression(t.callExpression(util.runtimeProperty("awrap", state.file.get("regeneratorIdentifier")), [argument]), false));
+    path.replaceWith(t.yieldExpression(t.callExpression(util.runtimeProperty("awrap"), [argument]), false));
   }
 };
