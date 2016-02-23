@@ -13,6 +13,12 @@
   "meta": {
     "./plugin-babel.js": {
       "format": "cjs"
+    },
+    "./systemjs-babel-browser.js": {
+      "format": "cjs"
+    },
+    "./systemjs-babel-node.js": {
+      "format": "cjs"
     }
   },
   "files": [
