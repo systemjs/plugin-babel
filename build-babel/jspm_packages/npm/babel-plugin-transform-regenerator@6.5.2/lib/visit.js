@@ -85,7 +85,7 @@ exports.visitor = {
         bodyBlockPath.node.body = innerBody;
       }
 
-      var outerFnExpr = getOuterFnExpr(path);
+      var outerFnExpr = getOuterFnExpr(path, state);
       // Note that getOuterFnExpr has the side-effect of ensuring that the
       // function has a name (so node.id will always be an Identifier), even
       // if a temporary name has to be synthesized.
@@ -150,7 +150,7 @@ exports.visitor = {
 // used to refer reliably to the function object from inside the function.
 // This expression is essentially a replacement for arguments.callee, with
 // the key advantage that it works in strict mode.
-function getOuterFnExpr(funPath) {
+function getOuterFnExpr(funPath, state) {
   var node = funPath.node;
   t.assertFunction(node);
 
@@ -170,7 +170,7 @@ function getOuterFnExpr(funPath) {
       return node.id;
     }
 
-    var markDecl = getRuntimeMarkDecl(pp);
+    var markDecl = getRuntimeMarkDecl(pp, state);
     var markedArray = markDecl.declarations[0].id;
     var funDeclIdArray = markDecl.declarations[0].init.callee.object;
     t.assertArrayExpression(funDeclIdArray);
@@ -184,7 +184,7 @@ function getOuterFnExpr(funPath) {
   return node.id;
 }
 
-function getRuntimeMarkDecl(blockPath) {
+function getRuntimeMarkDecl(blockPath, state) {
   var block = blockPath.node;
   _assert2["default"].ok(Array.isArray(block.body));
 
@@ -243,7 +243,7 @@ var awaitVisitor = {
     path.skip(); // Don't descend into nested function scopes.
   },
 
-  AwaitExpression: function AwaitExpression(path) {
+  AwaitExpression: function AwaitExpression(path, state) {
     // Convert await expressions to yield expressions.
     var argument = path.node.argument;
 
