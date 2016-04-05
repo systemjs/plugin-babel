@@ -16,8 +16,9 @@ export let runtimeTransform = {
   plugins: [[runtimeTransformPlugin, { polyfill: false }]]
 };
 
-export { default as presetStage3 } from 'babel-preset-stage-3';
-export { default as presetStage2 } from 'babel-preset-stage-2';
+export { plugins as pluginsStage1 } from 'babel-preset-stage-1';
+export { plugins as pluginsStage2 } from 'babel-preset-stage-2';
+export { plugins as pluginsStage3 } from 'babel-preset-stage-3';
 
 // ES2015 plugins to keep in sync with https://github.com/babel/babel/blob/master/packages/babel-preset-es2015/index.js
 import templateLiterals from 'babel-plugin-transform-es2015-template-literals';

@@ -35,6 +35,42 @@ Then set `transpiler: 'plugin-babel'` in the `jspm.js` config file.
 
 Alternatively use `jspm init -p` to set up the plugin automatically.
 
+### ES Features
+
+This repo comes with its own Babel build which includes all ES6 and Stage 2 and Stage 3 features by default, except for the ES6 library polyfills.
+
+If ES6 polyfills are desired it is advisable to import core-js libraries manually as needed.
+
+To use Stage 1 features, these need to be manually enabled via configuration:
+
+```javascript
+SystemJS.config({
+  meta: {
+    '*.js': {
+      babelOptions: {
+        stage1: true
+      }
+    }
+  }
+});
+```
+
+If running in NodeJS or browsers that have ES2015 support, ES2015 feature transpilation can be disabled similarly:
+
+```javascript
+SystemJS.config({
+  meta: {
+    '*.js': {
+      babelOptions: {
+        es2015: false
+      }
+    }
+  }
+});
+```
+
+This allows workflows that just support ES modules and stage proposal transforms.
+
 ### Building and Bundling
 
 Build support works with no further configuration through the standard jspm build and bundle commands.
@@ -54,13 +90,6 @@ builder.buildStatic('app.js', 'out-static.js', { format: 'cjs' }); // create a s
 When using `builder.buildStatic`, the ES module structure will be preserved and [Rollup optimizations](https://github.com/rollup/rollup) will included automatically
 allowing for static dead code removal.
 
-## ES Features
-
-This repo comes with its own Babel build which includes all ES6 and Stage 3 features, except for the ES6 library polyfills.
-
-If ES6 polyfills are desired it is advisable to import core-js libraries manually as needed.
-
-
 ### Custom Presets and Transforms
 
 Custom presets and transforms can be set via `babelOptions` config:
@@ -71,25 +100,33 @@ SystemJS.config({
     'custom-preset': 'path/to/custom-preset.js',
     'custom-plugin': 'path/to/custom-plugin.js'
   },
-  babelOptions: {
-    presets: ['custom-preset'],
-    plugins: ['custom-plugin']
+  meta: {
+    '*.js': {
+      babelOptions: {
+        presets: ['custom-preset'],
+        plugins: ['custom-plugin']
+      }
+    }
   }
 });
 ```
 
-This way JSX support or other features can be included as needed.
+This way JSX support or other features can be included as needed (eg see http://jspm.io/0.17-beta-guide/installing-the-jsx-babel-plugin.html for jspm jsx support)
 
-You can pass options to Babel plugins the same way as in Node, without creating custom presets.
+You can also pass options to Babel plugins the same way as in Node, without creating custom presets.
 
 ```javascript
 SystemJS.config({
-  babelOptions: {
-    plugins: [
-      [ "react-transform", {
-        "transforms": [{"transform": "react-transform-jspm-hmr"}]
-      }]
-    ]
+  meta: {
+    '*.js': {
+      babelOptions: {
+        plugins: [
+          [ "react-transform", {
+            "transforms": [{"transform": "react-transform-jspm-hmr"}]
+          }]
+        ]
+      }
+    }
   }
 });
 ```

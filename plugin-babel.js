@@ -4,8 +4,9 @@ var babel = require('systemjs-babel-build').babel;
 var es2015 = require('systemjs-babel-build').presetES2015;
 var es2015Register = require('systemjs-babel-build').presetES2015Register;
 var modulesRegister = require('systemjs-babel-build').modulesRegister;
-var stage3 = require('systemjs-babel-build').presetStage3;
-var stage2 = require('systemjs-babel-build').presetStage2;
+var stage3 = require('systemjs-babel-build').pluginsStage3;
+var stage2 = require('systemjs-babel-build').pluginsStage2;
+var stage1 = require('systemjs-babel-build').pluginsStage1;
 
 var externalHelpers = require('systemjs-babel-build').externalHelpers;
 var runtimeTransform = require('systemjs-babel-build').runtimeTransform;
@@ -42,6 +43,7 @@ function prepend(a, b) {
  *   es2015: true / false (defaults to true)
  *   stage3: true / false (defaults to true)
  *   stage2: true / false (defaults to true)
+ *   stage1: true / false (defaults to false)
  *   plugins: array of custom plugins (objects or module name strings)
  *   presets: array of custom presets (objects or module name strings)
  *
@@ -52,7 +54,8 @@ var defaultBabelOptions = {
   sourceMaps: true,
   es2015: true,
   stage3: true,
-  stage2: true
+  stage2: true,
+  stage1: false
 };
 
 exports.translate = function(load) {
@@ -97,12 +100,6 @@ exports.translate = function(load) {
     var presets = [];
     var plugins = [];
 
-    if (babelOptions.stage3)
-      presets.push(stage3);
-
-    if (babelOptions.stage2)
-      presets.push(stage2);    
-
     if (babelOptions.modularRuntime) {
       if (load.metadata.format == 'cjs')
         throw new TypeError('plugin-babel does not support modular runtime for CJS module transpilations. Set babelOptions.modularRuntime: false if needed.');
@@ -120,6 +117,21 @@ exports.translate = function(load) {
       presets.push((loader.builder || load.metadata.format == 'cjs') ? es2015 : es2015Register);
     else if (!(loader.builder || load.metadata.format == 'cjs'))
       presets.push(modulesRegister);
+
+    if (babelOptions.stage3)
+      presets.push({
+        plugins: stage3
+      });
+
+    if (babelOptions.stage2)
+      presets.push({
+        plugins: stage2
+      });
+
+    if (babelOptions.stage1)
+      presets.push({
+        plugins: stage1
+      });
 
     if (babelOptions.presets)
       babelOptions.presets.forEach(function(preset) {

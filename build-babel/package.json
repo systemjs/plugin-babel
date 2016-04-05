@@ -25,6 +25,7 @@
       "babel-plugin-transform-es2015-unicode-regex": "npm:babel-plugin-transform-es2015-unicode-regex@^6.3.13",
       "babel-plugin-transform-regenerator": "npm:babel-plugin-transform-regenerator@^6.3.18",
       "babel-plugin-transform-runtime": "npm:babel-plugin-transform-runtime@^6.3.13",
+      "babel-preset-stage-1": "npm:babel-preset-stage-1@^6.5.0",
       "babel-preset-stage-2": "npm:babel-preset-stage-2@^6.5.0",
       "babel-preset-stage-3": "npm:babel-preset-stage-3@^6.3.13",
       "core-js": "npm:core-js@^1.2.6",
@@ -37,33 +38,26 @@
       "assert": "github:jspm/nodelibs-assert@^0.2.0-alpha",
       "buffer": "github:jspm/nodelibs-buffer@^0.2.0-alpha",
       "child_process": "github:jspm/nodelibs-child_process@^0.2.0-alpha",
-      "events": "npm:events@^1.1.0",
+      "events": "github:jspm/nodelibs-events@^0.2.0-alpha",
       "fs": "github:jspm/nodelibs-fs@^0.2.0-alpha",
       "http": "github:jspm/nodelibs-http@^0.2.0-alpha",
       "module": "github:jspm/nodelibs-module@^0.2.0-alpha",
       "net": "github:jspm/nodelibs-net@^0.2.0-alpha",
       "nodelibs": "github:jspm/nodelibs@^0.1.0",
-      "os": "npm:os-browserify@^0.2.0",
+      "os": "github:jspm/nodelibs-os@^0.2.0-alpha",
       "path": "github:jspm/nodelibs-path@^0.2.0-alpha",
       "process": "github:jspm/nodelibs-process@^0.2.0-alpha",
       "stream": "github:jspm/nodelibs-stream@^0.2.0-alpha",
-      "tty": "npm:tty-browserify@^0.0.0",
+      "tty": "github:jspm/nodelibs-tty@^0.2.0-alpha",
       "url": "github:jspm/nodelibs-url@^0.2.0-alpha",
       "util": "github:jspm/nodelibs-util@^0.2.0-alpha"
     },
     "overrides": {
       "github:jmcriffey/bower-traceur@0.0.93": {
-        "format": "global",
         "meta": {
           "traceur.js": {
-            "exports": "traceur"
-          }
-        }
-      },
-      "npm:events@1.1.0": {
-        "map": {
-          "./events.js": {
-            "node": "@node/events"
+            "exports": "traceur",
+            "format": "global"
           }
         }
       },
@@ -93,7 +87,7 @@
           }
         }
       },
-      "npm:stream-http@2.1.1": {
+      "npm:stream-http@2.2.1": {
         "map": {
           "./index.js": {
             "node": "@node/http"
@@ -104,13 +98,6 @@
         "map": {
           "./index.js": {
             "node": "@node/string_decoder"
-          }
-        }
-      },
-      "npm:tty-browserify@0.0.0": {
-        "map": {
-          "./index.js": {
-            "node": "@node/tty"
           }
         }
       },
