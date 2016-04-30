@@ -46,6 +46,8 @@ function prepend(a, b) {
  *   stage1: true / false (defaults to false)
  *   plugins: array of custom plugins (objects or module name strings)
  *   presets: array of custom presets (objects or module name strings)
+ *   compact: as in Babel
+ *   comments: as in Babel
  *
  * babelOptions can be set at SystemJS.babelOptions OR on the metadata object for a given module
  */
@@ -55,7 +57,9 @@ var defaultBabelOptions = {
   es2015: true,
   stage3: true,
   stage2: true,
-  stage1: false
+  stage1: false,
+  compact: 'auto',
+  comments: true
 };
 
 exports.translate = function(load) {
@@ -158,6 +162,8 @@ exports.translate = function(load) {
       filename: load.address,
       sourceMaps: babelOptions.sourceMaps,
       inputSourceMap: load.metadata.sourceMap,
+      compact: babelOptions.compact,
+      comments: babelOptions.comments,
       code: true,
       ast: true,
       resolveModuleSource: function(m) {
