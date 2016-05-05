@@ -6,7 +6,7 @@ export let modulesRegister = {
   plugins: [modulesRegisterPlugin]
 };
 
-import externalHelpersPlugin from 'babel-plugin-external-helpers-2';
+import externalHelpersPlugin from 'babel-plugin-external-helpers';
 export let externalHelpers = {
   plugins: [externalHelpersPlugin]
 };

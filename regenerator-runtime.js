@@ -1,4 +1,4 @@
-let __regeneratorRuntime = (function(module) {
+export default (function(module) {
 /**
  * Copyright (c) 2014, Facebook, Inc.
  * All rights reserved.
@@ -668,4 +668,3 @@ let __regeneratorRuntime = (function(module) {
   typeof self === "object" ? self : this
 );
 return module.exports; })({exports:{}});
-export default __regeneratorRuntime;

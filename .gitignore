@@ -1,2 +1,2 @@
-build-babel/jspm_packages
-build-babel/node_modules
+node_modules
+jspm_packages

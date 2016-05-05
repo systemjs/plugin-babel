@@ -4,7 +4,7 @@
       "babel": "npm:babel-core@^6.3.17",
       "babel-helpers": "npm:babel-helpers@^6.3.13",
       "babel-plugin-check-es2015-constants": "npm:babel-plugin-check-es2015-constants@^6.3.13",
-      "babel-plugin-external-helpers-2": "npm:babel-plugin-external-helpers-2@^6.3.13",
+      "babel-plugin-external-helpers": "npm:babel-plugin-external-helpers@^6.3.13",
       "babel-plugin-transform-es2015-arrow-functions": "npm:babel-plugin-transform-es2015-arrow-functions@^6.3.13",
       "babel-plugin-transform-es2015-block-scoped-functions": "npm:babel-plugin-transform-es2015-block-scoped-functions@^6.3.13",
       "babel-plugin-transform-es2015-block-scoping": "npm:babel-plugin-transform-es2015-block-scoping@^6.3.13",
@@ -43,7 +43,6 @@
       "http": "github:jspm/nodelibs-http@^0.2.0-alpha",
       "module": "github:jspm/nodelibs-module@^0.2.0-alpha",
       "net": "github:jspm/nodelibs-net@^0.2.0-alpha",
-      "nodelibs": "github:jspm/nodelibs@^0.1.0",
       "os": "github:jspm/nodelibs-os@^0.2.0-alpha",
       "path": "github:jspm/nodelibs-path@^0.2.0-alpha",
       "process": "github:jspm/nodelibs-process@^0.2.0-alpha",
@@ -87,7 +86,7 @@
           }
         }
       },
-      "npm:stream-http@2.2.1": {
+      "npm:stream-http@2.3.0": {
         "map": {
           "./index.js": {
             "node": "@node/http"
