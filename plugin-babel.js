@@ -91,10 +91,18 @@ exports.translate = function(load) {
 
   if (babelOptions.plugins)
     babelOptions.plugins.forEach(function(plugin) {
-      if (typeof plugin == 'string')
-        pluginAndPresetModuleLoads.push(pluginLoader['import'](plugin, module.id));
-      else if (Array.isArray(plugin) && typeof plugin[0] == 'string')
-        pluginAndPresetModuleLoads.push(pluginLoader['import'](plugin[0], module.id));
+      plugin = typeof plugin == 'string' ? plugin : Array.isArray(plugin) && typeof plugin[0] == 'string' && plugin[0];
+      if (!plugin)
+        return;
+      pluginAndPresetModuleLoads.push(
+        pluginLoader.normalize(plugin, module.id)
+        .then(function(normalized) {
+          return pluginLoader.load(normalized)
+          .then(function() {
+            return pluginLoader.get(normalized)['default'];
+          });
+        });
+      );
     });
 
   return Promise.all(pluginAndPresetModuleLoads)
