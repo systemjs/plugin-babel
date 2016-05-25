@@ -101,7 +101,7 @@ exports.translate = function(load) {
           .then(function() {
             return pluginLoader.get(normalized)['default'];
           });
-        });
+        })
       );
     });
 

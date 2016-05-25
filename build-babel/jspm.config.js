@@ -1,5 +1,10 @@
 SystemJS.config({
-  packages: {}
+  devConfig: {
+    "map": {
+      "plugin-babel": "npm:systemjs-plugin-babel@0.0.10"
+    }
+  },
+  transpiler: "plugin-babel"
 });
 
 SystemJS.config({
@@ -38,7 +43,6 @@ SystemJS.config({
     "babel-preset-stage-3": "npm:babel-preset-stage-3@6.5.0",
     "core-js": "npm:core-js@1.2.6",
     "regenerator": "github:facebook/regenerator@0.8.42",
-    "traceur": "github:jmcriffey/bower-traceur@0.0.93",
     "assert": "github:jspm/nodelibs-assert@0.2.0-alpha",
     "buffer": "github:jspm/nodelibs-buffer@0.2.0-alpha",
     "child_process": "github:jspm/nodelibs-child_process@0.2.0-alpha",

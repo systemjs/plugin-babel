@@ -32,7 +32,7 @@
       "regenerator": "github:facebook/regenerator@^0.8.42"
     },
     "devDependencies": {
-      "traceur": "github:jmcriffey/bower-traceur@^0.0.93"
+      "plugin-babel": "npm:systemjs-plugin-babel@0.0.10"
     },
     "peerDependencies": {
       "assert": "github:jspm/nodelibs-assert@^0.2.0-alpha",
@@ -52,14 +52,6 @@
       "util": "github:jspm/nodelibs-util@^0.2.0-alpha"
     },
     "overrides": {
-      "github:jmcriffey/bower-traceur@0.0.93": {
-        "meta": {
-          "traceur.js": {
-            "exports": "traceur",
-            "format": "global"
-          }
-        }
-      },
       "npm:inherits@2.0.1": {
         "ignore": [
           "test.js"
