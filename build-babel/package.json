@@ -29,7 +29,8 @@
       "babel-preset-stage-2": "npm:babel-preset-stage-2@^6.5.0",
       "babel-preset-stage-3": "npm:babel-preset-stage-3@^6.3.13",
       "core-js": "npm:core-js@^1.2.6",
-      "regenerator": "github:facebook/regenerator@^0.8.42"
+      "regenerator": "github:facebook/regenerator@^0.8.42",
+      "regenerator-runtime": "npm:regenerator-runtime@^0.9.5"
     },
     "devDependencies": {
       "plugin-babel": "npm:systemjs-plugin-babel@0.0.10"
