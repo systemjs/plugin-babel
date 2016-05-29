@@ -10,7 +10,7 @@ test('systemjs-plugin-babel', function (t) {
   System.config({
     map: {
       'plugin-babel': './plugin-babel.js',
-      'systemjs-babel-build': './systemjs-babel-browser.js'
+      'systemjs-babel-build': './systemjs-babel-node.js'
     },
     transpiler: 'plugin-babel'
   });
