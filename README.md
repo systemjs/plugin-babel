@@ -1,6 +1,8 @@
 SystemJS Babel Plugin
 ===
 
+[![Build Status][travis-image]][travis-url]
+
 Provides Babel transpilation in the browser and in builds when using SystemJS 0.19.12+ and SystemJS Builder 0.15+.
 
 Compatible with the the automatic Rollup optimizations in SystemJS Builder.
@@ -135,3 +137,6 @@ LICENSE
 ---
 
 MIT
+
+[travis-url]: http://travis-ci.org/systemjs/plugin-babel
+[travis-image]: http://travis-ci.org/systemjs/plugin-babel.svg?branch=master
