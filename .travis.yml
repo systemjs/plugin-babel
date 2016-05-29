@@ -4,6 +4,7 @@ git:
 sudo: false
 cache:
   directories:
+  - node_modules
   - build-babel/node_modules
   - build-babel/jspm_packages
 language: node_js
@@ -15,4 +16,5 @@ matrix:
     - node_js: '5'
     - node_js: '6'
 before_script:
+  - "npm i jspm@beta --prefix build-babel" # Force install in build-babel/node_modules
   - "npm run build"
