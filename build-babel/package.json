@@ -28,7 +28,7 @@
       "babel-preset-stage-1": "npm:babel-preset-stage-1@^6.5.0",
       "babel-preset-stage-2": "npm:babel-preset-stage-2@^6.5.0",
       "babel-preset-stage-3": "npm:babel-preset-stage-3@^6.3.13",
-      "core-js": "npm:core-js@^1.2.6",
+      "core-js": "npm:core-js@^2.4.0",
       "regenerator-runtime": "npm:regenerator-runtime@^0.9.5"
     },
     "devDependencies": {
