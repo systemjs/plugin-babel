@@ -13,7 +13,7 @@ var t = _interopRequireWildcard(_babelTypes);
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function runtimeProperty(name, regeneratorIdentifier) {
-  return t.memberExpression(regeneratorIdentifer || t.identifier("regeneratorRuntime"), t.identifier(name), false);
+  return t.memberExpression(regeneratorIdentifier || t.identifier("regeneratorRuntime"), t.identifier(name), false);
 } /**
    * Copyright (c) 2014, Facebook, Inc.
    * All rights reserved.
