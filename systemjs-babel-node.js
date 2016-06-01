@@ -40368,7 +40368,7 @@ $__System.registerDynamic("10d", ["9", "3"], true, function($__require, exports,
     }
   }
   function runtimeProperty(name, regeneratorIdentifier) {
-    return t.memberExpression(regeneratorIdentifer || t.identifier("regeneratorRuntime"), t.identifier(name), false);
+    return t.memberExpression(regeneratorIdentifier || t.identifier("regeneratorRuntime"), t.identifier(name), false);
   }
   function isReference(path) {
     return path.isReferenced() || path.parentPath.isAssignmentExpression({left: path.node});
@@ -40654,8 +40654,10 @@ $__System.registerDynamic("22f", ["@node/assert", "9", "108", "10a", "10d", "10c
 
 $__System.registerDynamic("@system-env", [], false, function() {
   return {
+    "production": true,
     "browser": false,
     "node": true,
+    "dev": false,
     "default": true
   };
 });
@@ -40687,7 +40689,7 @@ $__System.registerDynamic("230", ["22f", "3"], true, function($__require, export
 });
 
 $__System.register('1', ['106', '230', 'ba', 'bb', 'bd', 'bf', 'ca', 'cb', 'cf', 'd8', 'd9', 'da', 'db', 'dc', 'e4', 'e5', 'e6', 'e7', 'e8', 'e9', 'f5', 'f6', 'f7', 'fc', 'fd'], function (_export, _context) {
-  'use strict';
+  "use strict";
 
   var babel, modulesRegisterPlugin, externalHelpersPlugin, runtimeTransformPlugin, templateLiterals, literals, functionName, arrowFunctions, blockScopedFunctions, classes, objectSuper, shorthandProperties, computedProperties, forOf, stickyRegex, unicodeRegex, constants, spread, parameters, destructuring, blockScoping, regenerator, modulesRegister, externalHelpers, runtimeTransform, es2015Plugins, regeneratorPlugin, presetES2015, presetES2015Register;
   return {
