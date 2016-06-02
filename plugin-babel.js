@@ -70,6 +70,9 @@ exports.translate = function(load) {
   var loader = this;
   var pluginLoader = loader.pluginLoader || loader;
 
+  // we only output ES modules when running in the builder
+  var outputESM = loader.builder && !load.metadata.outputESM === false;
+
   var babelOptions = {};
 
   if (load.metadata.babelOptions)
@@ -126,8 +129,8 @@ exports.translate = function(load) {
     }
     
     if (babelOptions.es2015)
-      presets.push((loader.builder || load.metadata.format == 'cjs') ? es2015 : es2015Register);
-    else if (!(loader.builder || load.metadata.format == 'cjs'))
+      presets.push((outputESM || load.metadata.format == 'cjs') ? es2015 : es2015Register);
+    else if (!(outputESM || load.metadata.format == 'cjs'))
       presets.push(modulesRegister);
 
     if (babelOptions.stage3)
@@ -204,7 +207,7 @@ exports.translate = function(load) {
     // set output module format
     // (in builder we output modules as esm)
     if (!load.metadata.format || load.metadata.format == 'detect')
-      load.metadata.format = loader.builder ? 'esm' : 'register';
+      load.metadata.format = outputESM ? 'esm' : 'register';
 
     load.metadata.sourceMap = output.map;
 
