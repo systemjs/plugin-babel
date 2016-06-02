@@ -171,6 +171,7 @@ exports.translate = function(load) {
       plugins: plugins,
       presets: presets,
       filename: load.address,
+      moduleIds: false,
       sourceMaps: babelOptions.sourceMaps,
       inputSourceMap: load.metadata.sourceMap,
       compact: babelOptions.compact,
@@ -206,7 +207,7 @@ exports.translate = function(load) {
 
     // set output module format
     // (in builder we output modules as esm)
-    if (!load.metadata.format || load.metadata.format == 'detect')
+    if (!load.metadata.format || load.metadata.format == 'detect' || load.metadata.format == 'esm')
       load.metadata.format = outputESM ? 'esm' : 'register';
 
     load.metadata.sourceMap = output.map;
