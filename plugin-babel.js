@@ -62,7 +62,7 @@ var defaultBabelOptions = {
   comments: true
 };
 
-exports.translate = function(load) {
+exports.translate = function(load, traceOpts) {
   // we don't transpile anything other than CommonJS or ESM
   if (load.metadata.format == 'global' || load.metadata.format == 'amd' || load.metadata.format == 'json')
     throw new TypeError('plugin-babel cannot transpile ' + load.metadata.format + ' modules. Ensure "' + load.name + '" is configured not to use this loader.');
@@ -71,7 +71,7 @@ exports.translate = function(load) {
   var pluginLoader = loader.pluginLoader || loader;
 
   // we only output ES modules when running in the builder
-  var outputESM = loader.builder && !load.metadata.outputESM === false;
+  var outputESM = traceOpts ? traceOpts.outputESM : loader.builder;
 
   var babelOptions = {};
 
