@@ -123,8 +123,10 @@ SystemJS.config({
     '*.js': {
       babelOptions: {
         plugins: [
-          [ "react-transform", {
-            "transforms": [{"transform": "react-transform-jspm-hmr"}]
+          // best installed via jspm install npm:babel-plugin-transform-async-to-module-method
+          ["babel-plugin-transform-async-to-module-method", {
+            "module": "bluebird",
+            "method": "coroutine"
           }]
         ]
       }
