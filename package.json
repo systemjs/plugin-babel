@@ -5,10 +5,13 @@
   "jspmPackage": true,
   "scripts": {
     "build": "./build.sh",
+    "build:tape": "test/bundleTape.sh",
     "clear": "rm -rf build-babel/node_modules build-babel/jspm_packages regenerator-runtime.js systemjs-babel-node.js systemjs-babel-browser.js",
     "prepublish": "npm run build",
     "preversion": "npm run test",
-    "test": "node test/index.js"
+    "test": "npm run test:node && npm run test:browser",
+    "test:node": "node test/index.js",
+    "test:browser": "cat test/index.html | browser-run --input html --static ./"
   },
   "main": "plugin-babel.js",
   "map": {

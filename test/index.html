@@ -1,0 +1,37 @@
+<script src="test/jspm_packages/system.src.js"></script>
+<script type="text/javascript">
+  System.config({
+    'map': {
+      'tape': './test/jspm_bundles/tape.amd-bundle.min.js',
+      'systemjs': './test/jspm_packages/system.src.js'
+    },
+    'packages': {
+      'systemjs': {
+        format: 'global'
+      }
+    }
+  })
+
+  System.config({
+    map: {
+      'plugin-babel': './plugin-babel.js',
+      'systemjs-babel-build': './systemjs-babel-browser.js'
+    },
+    transpiler: 'plugin-babel'
+  });
+</script>
+
+<script type="text/javascript">
+  SystemJS
+    .import('./test/scenarios/index.js')
+    .then(registerTapeOnFinish, window.close);
+
+  //
+
+  function registerTapeOnFinish() {
+    SystemJS.import('tape')
+      .then(function (tape$m) {
+        tape$m.onFinish(window.close)
+      })
+  }
+</script>

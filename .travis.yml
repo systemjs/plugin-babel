@@ -1,12 +1,19 @@
 ---
+addons:
+  apt:
+    packages:
+      - xvfb
 git:
   depth: 1
 sudo: false
 cache:
   directories:
-  - node_modules
-  - build-babel/node_modules
   - build-babel/jspm_packages
+  - build-babel/node_modules
+  - node_modules
+  - test/jspm_packages
+  - test/jspm_bundles
+  - test/node_modules
 language: node_js
 matrix:
   include:
@@ -15,6 +22,11 @@ matrix:
     - node_js: '4'
     - node_js: '5'
     - node_js: '6'
+install:
+  - export DISPLAY=':99.0'
+  - Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+  - npm install
 before_script:
   - "npm i jspm@beta --prefix build-babel" # Force install in build-babel/node_modules
+  - "npm run build:tape"
   - "npm run build"
