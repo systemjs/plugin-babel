@@ -1,13 +1,11 @@
 {
   "name": "systemjs-plugin-babel",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "registry": "npm",
   "jspmPackage": true,
   "scripts": {
     "build": "./build.sh",
     "clear": "rm -rf build-babel/node_modules build-babel/jspm_packages regenerator-runtime.js systemjs-babel-node.js systemjs-babel-browser.js",
-    "prepublish": "npm run build",
-    "preversion": "npm run test",
     "test": "node test/index.js"
   },
   "main": "plugin-babel.js",
@@ -34,6 +32,6 @@
   "devDependencies": {
     "browser-run": "^3.2.0",
     "systemjs": "^0.19.29",
-    "tape": "^4.5.1"
+    "tape": "^4.6.0"
   }
 }
