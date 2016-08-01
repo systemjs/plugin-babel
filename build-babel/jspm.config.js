@@ -4,7 +4,10 @@ SystemJS.config({
       "plugin-babel": "npm:systemjs-plugin-babel@0.0.10"
     }
   },
-  transpiler: "plugin-babel"
+  transpiler: "plugin-babel",
+  map: {
+    "regenerator": "github:facebook/regenerator@0.8.46"
+  }
 });
 
 SystemJS.config({
@@ -42,7 +45,6 @@ SystemJS.config({
     "babel-preset-stage-2": "npm:babel-preset-stage-2@6.5.0",
     "babel-preset-stage-3": "npm:babel-preset-stage-3@6.5.0",
     "core-js": "npm:core-js@1.2.6",
-    "regenerator": "github:facebook/regenerator@0.8.46",
     "assert": "github:jspm/nodelibs-assert@0.2.0-alpha",
     "buffer": "github:jspm/nodelibs-buffer@0.2.0-alpha",
     "child_process": "github:jspm/nodelibs-child_process@0.2.0-alpha",

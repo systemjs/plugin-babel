@@ -52,10 +52,24 @@
       "util": "github:jspm/nodelibs-util@^0.2.0-alpha"
     },
     "overrides": {
+      "npm:debug@2.2.0": {
+        "main": "browser.js",
+        "jspmNodeConversion": false,
+        "format": "cjs",
+        "map": {
+          "./node.js": {
+            "browser": "./browser.js"
+          }
+        }
+      },
       "npm:inherits@2.0.1": {
         "ignore": [
           "test.js"
         ]
+      },
+      "npm:ms@0.7.1": {
+        "jspmNodeConversion": false,
+        "format": "cjs"
       },
       "npm:punycode@1.3.2": {
         "map": {
