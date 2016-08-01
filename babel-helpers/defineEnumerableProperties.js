@@ -7,4 +7,4 @@ export default (function (obj, descs) {
   }
 
   return obj;
-})
+});

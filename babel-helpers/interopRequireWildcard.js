@@ -13,4 +13,4 @@ export default (function (obj) {
     newObj.default = obj;
     return newObj;
   }
-})
+});

@@ -25,4 +25,4 @@ export default (function (fn) {
       return step("next");
     });
   };
-})
+});

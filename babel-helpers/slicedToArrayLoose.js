@@ -14,4 +14,4 @@ export default (function (arr, i) {
   } else {
     throw new TypeError("Invalid attempt to destructure non-iterable instance");
   }
-})
+});

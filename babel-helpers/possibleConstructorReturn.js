@@ -4,4 +4,4 @@ export default (function (self, call) {
   }
 
   return call && (typeof call === "object" || typeof call === "function") ? call : self;
-})
+});

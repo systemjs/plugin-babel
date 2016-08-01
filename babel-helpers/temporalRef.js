@@ -4,4 +4,4 @@ export default (function (val, name, undef) {
   } else {
     return val;
   }
-})
+});

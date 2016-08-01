@@ -6,4 +6,4 @@ export default (function (arr) {
   } else {
     return Array.from(arr);
   }
-})
+});

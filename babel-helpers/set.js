@@ -18,4 +18,4 @@ export default (function set(object, property, value, receiver) {
   }
 
   return value;
-})
+});

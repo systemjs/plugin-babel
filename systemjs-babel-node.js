@@ -40689,9 +40689,9 @@ $__System.registerDynamic("230", ["22f", "3"], true, function($__require, export
 });
 
 $__System.register('1', ['106', '230', 'ba', 'bb', 'bd', 'bf', 'ca', 'cb', 'cf', 'd8', 'd9', 'da', 'db', 'dc', 'e4', 'e5', 'e6', 'e7', 'e8', 'e9', 'f5', 'f6', 'f7', 'fc', 'fd'], function (_export, _context) {
-  "use strict";
+  'use strict';
 
-  var babel, modulesRegisterPlugin, externalHelpersPlugin, runtimeTransformPlugin, templateLiterals, literals, functionName, arrowFunctions, blockScopedFunctions, classes, objectSuper, shorthandProperties, computedProperties, forOf, stickyRegex, unicodeRegex, constants, spread, parameters, destructuring, blockScoping, regenerator, modulesRegister, externalHelpers, runtimeTransform, es2015Plugins, regeneratorPlugin, presetES2015, presetES2015Register;
+  var babel, modulesRegisterPlugin, externalHelpersPlugin, runtimeTransformPlugin, plugins, plugins$1, plugins$2, templateLiterals, literals, functionName, arrowFunctions, blockScopedFunctions, classes, objectSuper, shorthandProperties, computedProperties, forOf, stickyRegex, unicodeRegex, constants, spread, parameters, destructuring, blockScoping, regenerator, modulesRegister, externalHelpers, runtimeTransform, es2015Plugins, regeneratorPlugin, presetES2015, presetES2015Register;
   return {
     setters: [function (_) {
       blockScoping = _.default;
@@ -40706,20 +40706,11 @@ $__System.register('1', ['106', '230', 'ba', 'bb', 'bd', 'bf', 'ca', 'cb', 'cf',
     }, function (_bf) {
       runtimeTransformPlugin = _bf.default;
     }, function (_ca) {
-      var _exportObj = {};
-      _exportObj.pluginsStage1 = _ca.plugins;
-
-      _export(_exportObj);
+      plugins = _ca.plugins;
     }, function (_cb) {
-      var _exportObj2 = {};
-      _exportObj2.pluginsStage2 = _cb.plugins;
-
-      _export(_exportObj2);
+      plugins$1 = _cb.plugins;
     }, function (_cf) {
-      var _exportObj3 = {};
-      _exportObj3.pluginsStage3 = _cf.plugins;
-
-      _export(_exportObj3);
+      plugins$2 = _cf.plugins;
     }, function (_d) {
       templateLiterals = _d.default;
     }, function (_d2) {
@@ -40754,25 +40745,17 @@ $__System.register('1', ['106', '230', 'ba', 'bb', 'bd', 'bf', 'ca', 'cb', 'cf',
       destructuring = _fd.default;
     }],
     execute: function () {
-      _export('babel', babel);
-
       _export('modulesRegister', modulesRegister = {
         plugins: [modulesRegisterPlugin]
       });
-
-      _export('modulesRegister', modulesRegister);
 
       _export('externalHelpers', externalHelpers = {
         plugins: [externalHelpersPlugin]
       });
 
-      _export('externalHelpers', externalHelpers);
-
       _export('runtimeTransform', runtimeTransform = {
         plugins: [[runtimeTransformPlugin, { polyfill: false }]]
       });
-
-      _export('runtimeTransform', runtimeTransform);
 
       es2015Plugins = [templateLiterals, literals, functionName, arrowFunctions, blockScopedFunctions, classes, objectSuper, shorthandProperties, computedProperties, forOf, stickyRegex, unicodeRegex, constants, spread, parameters, destructuring, blockScoping];
       regeneratorPlugin = [regenerator, { async: false, asyncGenerators: false }];
@@ -40781,13 +40764,27 @@ $__System.register('1', ['106', '230', 'ba', 'bb', 'bd', 'bf', 'ca', 'cb', 'cf',
         plugins: [].concat(es2015Plugins, [regeneratorPlugin])
       });
 
-      _export('presetES2015', presetES2015);
-
       _export('presetES2015Register', presetES2015Register = {
         plugins: [].concat(es2015Plugins, [modulesRegisterPlugin, regeneratorPlugin])
       });
 
+      _export('babel', babel);
+
+      _export('modulesRegister', modulesRegister);
+
+      _export('externalHelpers', externalHelpers);
+
+      _export('runtimeTransform', runtimeTransform);
+
+      _export('presetES2015', presetES2015);
+
       _export('presetES2015Register', presetES2015Register);
+
+      _export('pluginsStage1', plugins);
+
+      _export('pluginsStage2', plugins$1);
+
+      _export('pluginsStage3', plugins$2);
     }
   };
 });

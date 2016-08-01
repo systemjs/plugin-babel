@@ -4,4 +4,4 @@ export default (function (left, right) {
   } else {
     return left instanceof right;
   }
-})
+});

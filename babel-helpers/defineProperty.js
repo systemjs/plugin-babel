@@ -11,4 +11,4 @@ export default (function (obj, key, value) {
   }
 
   return obj;
-})
+});

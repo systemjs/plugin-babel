@@ -21,4 +21,4 @@ export default (function get(object, property, receiver) {
 
     return getter.call(receiver);
   }
-})
+});
