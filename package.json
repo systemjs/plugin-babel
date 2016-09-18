@@ -3,6 +3,15 @@
   "version": "0.0.15",
   "registry": "npm",
   "jspmPackage": true,
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/systemjs/plugin-babel.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/systemjs/plugin-babel/issues"
+  },
+  "homepage": "https://github.com/systemjs/plugin-babel",
   "scripts": {
     "build": "./build.sh",
     "clear": "rm -rf build-babel/node_modules build-babel/jspm_packages regenerator-runtime.js systemjs-babel-node.js systemjs-babel-browser.js",
