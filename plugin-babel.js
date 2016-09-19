@@ -127,7 +127,7 @@ exports.translate = function(load, traceOpts) {
         load.source = 'import babelHelpers from "' + externalHelpersPath + '";' + load.source;
       presets.push(externalHelpers);
     }
-    
+
     if (babelOptions.es2015)
       presets.push((outputESM || load.metadata.format == 'cjs') ? es2015 : es2015Register);
     else if (!(outputESM || load.metadata.format == 'cjs'))
@@ -172,7 +172,7 @@ exports.translate = function(load, traceOpts) {
       presets: presets,
       filename: load.address,
       moduleIds: false,
-      sourceMaps: babelOptions.sourceMaps,
+      sourceMaps: traceOpts && traceOpts.sourceMaps || babelOptions.sourceMaps,
       inputSourceMap: load.metadata.sourceMap,
       compact: babelOptions.compact,
       comments: babelOptions.comments,
@@ -215,4 +215,3 @@ exports.translate = function(load, traceOpts) {
     return output.code;
   });
 };
-
