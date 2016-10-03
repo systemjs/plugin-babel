@@ -3,7 +3,7 @@
   babelHelpers.typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
     return typeof obj;
   } : function (obj) {
-    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj;
+    return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
   };
 
   babelHelpers.jsx = function () {
@@ -49,6 +49,186 @@
     };
   }();
 
+  babelHelpers.asyncIterator = function (iterable) {
+    if (typeof Symbol === "function") {
+      if (Symbol.asyncIterator) {
+        var method = iterable[Symbol.asyncIterator];
+        if (method != null) return method.call(iterable);
+      }
+
+      if (Symbol.iterator) {
+        return iterable[Symbol.iterator]();
+      }
+    }
+
+    throw new TypeError("Object is not async iterable");
+  };
+
+  babelHelpers.asyncGenerator = function () {
+    function AwaitValue(value) {
+      this.value = value;
+    }
+
+    function AsyncGenerator(gen) {
+      var front, back;
+
+      function send(key, arg) {
+        return new Promise(function (resolve, reject) {
+          var request = {
+            key: key,
+            arg: arg,
+            resolve: resolve,
+            reject: reject,
+            next: null
+          };
+
+          if (back) {
+            back = back.next = request;
+          } else {
+            front = back = request;
+            resume(key, arg);
+          }
+        });
+      }
+
+      function resume(key, arg) {
+        try {
+          var result = gen[key](arg);
+          var value = result.value;
+
+          if (value instanceof AwaitValue) {
+            Promise.resolve(value.value).then(function (arg) {
+              resume("next", arg);
+            }, function (arg) {
+              resume("throw", arg);
+            });
+          } else {
+            settle(result.done ? "return" : "normal", result.value);
+          }
+        } catch (err) {
+          settle("throw", err);
+        }
+      }
+
+      function settle(type, value) {
+        switch (type) {
+          case "return":
+            front.resolve({
+              value: value,
+              done: true
+            });
+            break;
+
+          case "throw":
+            front.reject(value);
+            break;
+
+          default:
+            front.resolve({
+              value: value,
+              done: false
+            });
+            break;
+        }
+
+        front = front.next;
+
+        if (front) {
+          resume(front.key, front.arg);
+        } else {
+          back = null;
+        }
+      }
+
+      this._invoke = send;
+
+      if (typeof gen.return !== "function") {
+        this.return = undefined;
+      }
+    }
+
+    if (typeof Symbol === "function" && Symbol.asyncIterator) {
+      AsyncGenerator.prototype[Symbol.asyncIterator] = function () {
+        return this;
+      };
+    }
+
+    AsyncGenerator.prototype.next = function (arg) {
+      return this._invoke("next", arg);
+    };
+
+    AsyncGenerator.prototype.throw = function (arg) {
+      return this._invoke("throw", arg);
+    };
+
+    AsyncGenerator.prototype.return = function (arg) {
+      return this._invoke("return", arg);
+    };
+
+    return {
+      wrap: function (fn) {
+        return function () {
+          return new AsyncGenerator(fn.apply(this, arguments));
+        };
+      },
+      await: function (value) {
+        return new AwaitValue(value);
+      }
+    };
+  }();
+
+  babelHelpers.asyncGeneratorDelegate = function (inner, awaitWrap) {
+    var iter = {},
+        waiting = false;
+
+    function pump(key, value) {
+      waiting = true;
+      value = new Promise(function (resolve) {
+        resolve(inner[key](value));
+      });
+      return {
+        done: false,
+        value: awaitWrap(value)
+      };
+    }
+
+    ;
+
+    if (typeof Symbol === "function" && Symbol.iterator) {
+      iter[Symbol.iterator] = function () {
+        return this;
+      };
+    }
+
+    iter.next = function (value) {
+      if (waiting) {
+        waiting = false;
+        return value;
+      }
+
+      return pump("next", value);
+    };
+
+    if (typeof inner.throw === "function") {
+      iter.throw = function (value) {
+        if (waiting) {
+          waiting = false;
+          throw value;
+        }
+
+        return pump("throw", value);
+      };
+    }
+
+    if (typeof inner.return === "function") {
+      iter.return = function (value) {
+        return pump("return", value);
+      };
+    }
+
+    return iter;
+  };
+
   babelHelpers.asyncToGenerator = function (fn) {
     return function () {
       var gen = fn.apply(this, arguments);
@@ -66,9 +246,9 @@
             resolve(value);
           } else {
             return Promise.resolve(value).then(function (value) {
-              return step("next", value);
+              step("next", value);
             }, function (err) {
-              return step("throw", err);
+              step("throw", err);
             });
           }
         }
