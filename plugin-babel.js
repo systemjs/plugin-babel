@@ -58,7 +58,7 @@ var defaultBabelOptions = {
   stage3: true,
   stage2: true,
   stage1: false,
-  compact: 'auto',
+  compact: false,
   comments: true
 };
 
