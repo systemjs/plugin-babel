@@ -171,6 +171,7 @@ exports.translate = function(load, traceOpts) {
       plugins: plugins,
       presets: presets,
       filename: load.address,
+      sourceFileName: load.address,
       moduleIds: false,
       sourceMaps: traceOpts && traceOpts.sourceMaps || babelOptions.sourceMaps,
       inputSourceMap: load.metadata.sourceMap,
