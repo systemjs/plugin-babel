@@ -174,7 +174,7 @@ exports.translate = function(load, traceOpts) {
       sourceFileName: load.address,
       moduleIds: false,
       sourceMaps: traceOpts && traceOpts.sourceMaps || babelOptions.sourceMaps,
-      inputSourceMap: load.metadata.sourceMap,
+      inputSourceMap: (babelOptions.provideInputSourceMap && babelOptions.provideInputSourceMap(load)) || load.metadata.sourceMap,
       compact: babelOptions.compact,
       comments: babelOptions.comments,
       code: true,
