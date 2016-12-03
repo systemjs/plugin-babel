@@ -17,9 +17,10 @@ SystemJS.config({
     "github:*/*.json"
   ],
   map: {
-    "constants": "github:jspm/nodelibs-constants@0.2.0-alpha",
-    "crypto": "github:jspm/nodelibs-crypto@0.2.0-alpha",
-    "babel": "npm:babel-core@6.18.0",
+    "babel-core": "npm:babel-core@6.18.2",
+    "constants": "npm:jspm-nodelibs-constants@0.2.0",
+    "crypto": "npm:jspm-nodelibs-crypto@0.2.0",
+    "babel": "npm:babel-core@6.18.2",
     "babel-helpers": "npm:babel-helpers@6.16.0",
     "babel-plugin-check-es2015-constants": "npm:babel-plugin-check-es2015-constants@6.8.0",
     "babel-plugin-external-helpers": "npm:babel-plugin-external-helpers@6.18.0",
@@ -28,11 +29,11 @@ SystemJS.config({
     "babel-plugin-transform-es2015-block-scoping": "npm:babel-plugin-transform-es2015-block-scoping@6.18.0",
     "babel-plugin-transform-es2015-classes": "npm:babel-plugin-transform-es2015-classes@6.18.0",
     "babel-plugin-transform-es2015-computed-properties": "npm:babel-plugin-transform-es2015-computed-properties@6.8.0",
-    "babel-plugin-transform-es2015-destructuring": "npm:babel-plugin-transform-es2015-destructuring@6.18.0",
+    "babel-plugin-transform-es2015-destructuring": "npm:babel-plugin-transform-es2015-destructuring@6.19.0",
     "babel-plugin-transform-es2015-for-of": "npm:babel-plugin-transform-es2015-for-of@6.18.0",
     "babel-plugin-transform-es2015-function-name": "npm:babel-plugin-transform-es2015-function-name@6.9.0",
     "babel-plugin-transform-es2015-literals": "npm:babel-plugin-transform-es2015-literals@6.8.0",
-    "babel-plugin-transform-es2015-modules-systemjs": "npm:babel-plugin-transform-es2015-modules-systemjs@6.18.0",
+    "babel-plugin-transform-es2015-modules-systemjs": "npm:babel-plugin-transform-es2015-modules-systemjs@6.19.0",
     "babel-plugin-transform-es2015-object-super": "npm:babel-plugin-transform-es2015-object-super@6.8.0",
     "babel-plugin-transform-es2015-parameters": "npm:babel-plugin-transform-es2015-parameters@6.18.0",
     "babel-plugin-transform-es2015-shorthand-properties": "npm:babel-plugin-transform-es2015-shorthand-properties@6.18.0",
@@ -48,30 +49,25 @@ SystemJS.config({
     "babel-preset-stage-3": "npm:babel-preset-stage-3@6.17.0",
     "core-js": "npm:core-js@2.4.1",
     "assert": "npm:jspm-nodelibs-assert@0.2.0",
-    "buffer": "npm:jspm-nodelibs-buffer@0.2.0",
+    "buffer": "npm:jspm-nodelibs-buffer@0.2.1",
     "child_process": "npm:jspm-nodelibs-child_process@0.2.0",
     "events": "npm:jspm-nodelibs-events@0.2.0",
     "fs": "npm:jspm-nodelibs-fs@0.2.0",
     "http": "npm:jspm-nodelibs-http@0.2.0",
     "module": "npm:jspm-nodelibs-module@0.2.0",
-    "net": "github:jspm/nodelibs-net@0.2.0-alpha",
-    "os": "github:jspm/nodelibs-os@0.2.0-alpha",
-    "path": "npm:jspm-nodelibs-path@0.2.0",
-    "process": "github:jspm/nodelibs-process@0.2.0-alpha",
-    "regenerator-runtime": "npm:regenerator-runtime@0.9.5",
-    "stream": "github:jspm/nodelibs-stream@0.2.0-alpha",
-    "string_decoder": "github:jspm/nodelibs-string_decoder@0.2.0-alpha",
-    "tty": "github:jspm/nodelibs-tty@0.2.0-alpha",
+    "net": "npm:jspm-nodelibs-net@0.2.0",
+    "os": "npm:jspm-nodelibs-os@0.2.0",
+    "path": "npm:jspm-nodelibs-path@0.2.1",
+    "process": "npm:jspm-nodelibs-process@0.2.0",
+    "regenerator-runtime": "npm:regenerator-runtime@0.9.6",
+    "stream": "npm:jspm-nodelibs-stream@0.2.0",
+    "string_decoder": "npm:jspm-nodelibs-string_decoder@0.2.0",
+    "tty": "npm:jspm-nodelibs-tty@0.2.0",
     "url": "npm:jspm-nodelibs-url@0.2.0",
-    "util": "npm:jspm-nodelibs-util@0.2.0",
-    "vm": "github:jspm/nodelibs-vm@0.2.0-alpha"
+    "util": "npm:jspm-nodelibs-util@0.2.1",
+    "vm": "npm:jspm-nodelibs-vm@0.2.0"
   },
   packages: {
-    "github:jspm/nodelibs-os@0.2.0-alpha": {
-      "map": {
-        "os-browserify": "npm:os-browserify@0.2.1"
-      }
-    },
     "npm:babel-messages@6.8.0": {
       "map": {
         "babel-runtime": "npm:babel-runtime@6.18.0"
@@ -179,15 +175,10 @@ SystemJS.config({
         "jsesc": "npm:jsesc@0.5.0"
       }
     },
-    "github:jspm/nodelibs-stream@0.2.0-alpha": {
-      "map": {
-        "stream-browserify": "npm:stream-browserify@2.0.1"
-      }
-    },
     "npm:stream-browserify@2.0.1": {
       "map": {
         "inherits": "npm:inherits@2.0.3",
-        "readable-stream": "npm:readable-stream@2.1.5"
+        "readable-stream": "npm:readable-stream@2.2.2"
       }
     },
     "npm:url@0.11.0": {
@@ -266,11 +257,6 @@ SystemJS.config({
         "core-util-is": "npm:core-util-is@1.0.2"
       }
     },
-    "github:jspm/nodelibs-crypto@0.2.0-alpha": {
-      "map": {
-        "crypto-browserify": "npm:crypto-browserify@3.11.0"
-      }
-    },
     "npm:crypto-browserify@3.11.0": {
       "map": {
         "inherits": "npm:inherits@2.0.3",
@@ -296,7 +282,7 @@ SystemJS.config({
         "inherits": "npm:inherits@2.0.3",
         "ripemd160": "npm:ripemd160@1.0.1",
         "cipher-base": "npm:cipher-base@1.0.3",
-        "sha.js": "npm:sha.js@2.4.5"
+        "sha.js": "npm:sha.js@2.4.8"
       }
     },
     "npm:browserify-sign@4.0.0": {
@@ -345,18 +331,13 @@ SystemJS.config({
         "bn.js": "npm:bn.js@4.11.6"
       }
     },
-    "npm:sha.js@2.4.5": {
-      "map": {
-        "inherits": "npm:inherits@2.0.3"
-      }
-    },
     "npm:parse-asn1@5.0.0": {
       "map": {
         "create-hash": "npm:create-hash@1.1.2",
         "pbkdf2": "npm:pbkdf2@3.0.9",
         "browserify-aes": "npm:browserify-aes@1.0.6",
         "evp_bytestokey": "npm:evp_bytestokey@1.0.0",
-        "asn1.js": "npm:asn1.js@4.8.1"
+        "asn1.js": "npm:asn1.js@4.9.0"
       }
     },
     "npm:browserify-aes@1.0.6": {
@@ -397,11 +378,6 @@ SystemJS.config({
         "inherits": "npm:inherits@2.0.3"
       }
     },
-    "github:jspm/nodelibs-string_decoder@0.2.0-alpha": {
-      "map": {
-        "string_decoder-browserify": "npm:string_decoder@0.10.31"
-      }
-    },
     "npm:babel-preset-stage-1@6.16.0": {
       "map": {
         "babel-preset-stage-2": "npm:babel-preset-stage-2@6.18.0",
@@ -434,10 +410,10 @@ SystemJS.config({
     "npm:babel-template@6.16.0": {
       "map": {
         "babel-runtime": "npm:babel-runtime@6.18.0",
-        "babel-traverse": "npm:babel-traverse@6.18.0",
-        "babel-types": "npm:babel-types@6.18.0",
-        "babylon": "npm:babylon@6.13.0",
-        "lodash": "npm:lodash@4.16.4"
+        "babel-traverse": "npm:babel-traverse@6.19.0",
+        "babel-types": "npm:babel-types@6.19.0",
+        "babylon": "npm:babylon@6.14.1",
+        "lodash": "npm:lodash@4.17.2"
       }
     },
     "npm:babel-plugin-transform-async-generator-functions@6.17.0": {
@@ -494,36 +470,6 @@ SystemJS.config({
         "number-is-nan": "npm:number-is-nan@1.0.1"
       }
     },
-    "npm:asn1.js@4.8.1": {
-      "map": {
-        "bn.js": "npm:bn.js@4.11.6",
-        "inherits": "npm:inherits@2.0.3",
-        "minimalistic-assert": "npm:minimalistic-assert@1.0.0"
-      }
-    },
-    "npm:babel-core@6.18.0": {
-      "map": {
-        "babel-helpers": "npm:babel-helpers@6.16.0",
-        "babel-messages": "npm:babel-messages@6.8.0",
-        "babel-template": "npm:babel-template@6.16.0",
-        "convert-source-map": "npm:convert-source-map@1.3.0",
-        "path-is-absolute": "npm:path-is-absolute@1.0.1",
-        "babel-code-frame": "npm:babel-code-frame@6.16.0",
-        "slash": "npm:slash@1.0.0",
-        "private": "npm:private@0.1.6",
-        "json5": "npm:json5@0.5.0",
-        "babel-register": "npm:babel-register@6.18.0",
-        "debug": "npm:debug@2.2.0",
-        "minimatch": "npm:minimatch@3.0.3",
-        "babel-generator": "npm:babel-generator@6.18.0",
-        "babel-traverse": "npm:babel-traverse@6.18.0",
-        "babel-types": "npm:babel-types@6.18.0",
-        "lodash": "npm:lodash@4.16.4",
-        "babel-runtime": "npm:babel-runtime@6.18.0",
-        "source-map": "npm:source-map@0.5.6",
-        "babylon": "npm:babylon@6.13.0"
-      }
-    },
     "npm:babel-preset-stage-2@6.18.0": {
       "map": {
         "babel-preset-stage-3": "npm:babel-preset-stage-3@6.17.0",
@@ -561,13 +507,6 @@ SystemJS.config({
         "babel-helper-get-function-arity": "npm:babel-helper-get-function-arity@6.18.0",
         "babel-traverse": "npm:babel-traverse@6.18.0",
         "babel-types": "npm:babel-types@6.18.0",
-        "babel-runtime": "npm:babel-runtime@6.18.0"
-      }
-    },
-    "npm:babel-plugin-transform-es2015-modules-systemjs@6.18.0": {
-      "map": {
-        "babel-template": "npm:babel-template@6.16.0",
-        "babel-helper-hoist-variables": "npm:babel-helper-hoist-variables@6.18.0",
         "babel-runtime": "npm:babel-runtime@6.18.0"
       }
     },
@@ -609,12 +548,12 @@ SystemJS.config({
     "npm:babel-register@6.18.0": {
       "map": {
         "core-js": "npm:core-js@2.4.1",
-        "babel-core": "npm:babel-core@6.18.0",
-        "lodash": "npm:lodash@4.16.4",
+        "babel-core": "npm:babel-core@6.18.2",
+        "lodash": "npm:lodash@4.17.2",
         "babel-runtime": "npm:babel-runtime@6.18.0",
         "home-or-tmp": "npm:home-or-tmp@2.0.0",
         "mkdirp": "npm:mkdirp@0.5.1",
-        "source-map-support": "npm:source-map-support@0.4.5"
+        "source-map-support": "npm:source-map-support@0.4.6"
       }
     },
     "npm:babel-plugin-transform-class-constructor-call@6.18.0": {
@@ -662,11 +601,6 @@ SystemJS.config({
         "babel-runtime": "npm:babel-runtime@6.18.0"
       }
     },
-    "npm:babel-plugin-transform-es2015-destructuring@6.18.0": {
-      "map": {
-        "babel-runtime": "npm:babel-runtime@6.18.0"
-      }
-    },
     "npm:babel-plugin-transform-es2015-for-of@6.18.0": {
       "map": {
         "babel-runtime": "npm:babel-runtime@6.18.0"
@@ -680,17 +614,6 @@ SystemJS.config({
     "npm:babel-plugin-external-helpers@6.18.0": {
       "map": {
         "babel-runtime": "npm:babel-runtime@6.18.0"
-      }
-    },
-    "npm:babel-generator@6.18.0": {
-      "map": {
-        "babel-messages": "npm:babel-messages@6.8.0",
-        "lodash": "npm:lodash@4.16.4",
-        "source-map": "npm:source-map@0.5.6",
-        "babel-runtime": "npm:babel-runtime@6.18.0",
-        "babel-types": "npm:babel-types@6.18.0",
-        "jsesc": "npm:jsesc@1.3.0",
-        "detect-indent": "npm:detect-indent@4.0.0"
       }
     },
     "npm:babel-traverse@6.18.0": {
@@ -717,12 +640,7 @@ SystemJS.config({
     "npm:babel-runtime@6.18.0": {
       "map": {
         "core-js": "npm:core-js@2.4.1",
-        "regenerator-runtime": "npm:regenerator-runtime@0.9.5"
-      }
-    },
-    "npm:source-map-support@0.4.5": {
-      "map": {
-        "source-map": "npm:source-map@0.5.6"
+        "regenerator-runtime": "npm:regenerator-runtime@0.9.6"
       }
     },
     "npm:home-or-tmp@2.0.0": {
@@ -784,11 +702,6 @@ SystemJS.config({
         "is-finite": "npm:is-finite@1.0.2"
       }
     },
-    "npm:jspm-nodelibs-buffer@0.2.0": {
-      "map": {
-        "buffer-browserify": "npm:buffer@4.9.1"
-      }
-    },
     "npm:jspm-nodelibs-http@0.2.0": {
       "map": {
         "http-browserify": "npm:stream-http@2.4.0"
@@ -797,6 +710,141 @@ SystemJS.config({
     "npm:jspm-nodelibs-url@0.2.0": {
       "map": {
         "url-browserify": "npm:url@0.11.0"
+      }
+    },
+    "npm:jspm-nodelibs-os@0.2.0": {
+      "map": {
+        "os-browserify": "npm:os-browserify@0.2.1"
+      }
+    },
+    "npm:jspm-nodelibs-crypto@0.2.0": {
+      "map": {
+        "crypto-browserify": "npm:crypto-browserify@3.11.0"
+      }
+    },
+    "npm:jspm-nodelibs-string_decoder@0.2.0": {
+      "map": {
+        "string_decoder-browserify": "npm:string_decoder@0.10.31"
+      }
+    },
+    "npm:jspm-nodelibs-stream@0.2.0": {
+      "map": {
+        "stream-browserify": "npm:stream-browserify@2.0.1"
+      }
+    },
+    "npm:babel-plugin-transform-es2015-modules-systemjs@6.19.0": {
+      "map": {
+        "babel-template": "npm:babel-template@6.16.0",
+        "babel-helper-hoist-variables": "npm:babel-helper-hoist-variables@6.18.0",
+        "babel-runtime": "npm:babel-runtime@6.18.0"
+      }
+    },
+    "npm:babel-plugin-transform-es2015-destructuring@6.19.0": {
+      "map": {
+        "babel-runtime": "npm:babel-runtime@6.18.0"
+      }
+    },
+    "npm:babel-core@6.18.2": {
+      "map": {
+        "babel-code-frame": "npm:babel-code-frame@6.16.0",
+        "babel-generator": "npm:babel-generator@6.19.0",
+        "babel-helpers": "npm:babel-helpers@6.16.0",
+        "babel-messages": "npm:babel-messages@6.8.0",
+        "babel-template": "npm:babel-template@6.16.0",
+        "babel-runtime": "npm:babel-runtime@6.18.0",
+        "babel-register": "npm:babel-register@6.18.0",
+        "babel-traverse": "npm:babel-traverse@6.19.0",
+        "babel-types": "npm:babel-types@6.19.0",
+        "babylon": "npm:babylon@6.14.1",
+        "convert-source-map": "npm:convert-source-map@1.3.0",
+        "debug": "npm:debug@2.3.3",
+        "json5": "npm:json5@0.5.1",
+        "lodash": "npm:lodash@4.17.2",
+        "minimatch": "npm:minimatch@3.0.3",
+        "path-is-absolute": "npm:path-is-absolute@1.0.1",
+        "private": "npm:private@0.1.6",
+        "slash": "npm:slash@1.0.0",
+        "source-map": "npm:source-map@0.5.6"
+      }
+    },
+    "npm:jspm-nodelibs-buffer@0.2.1": {
+      "map": {
+        "buffer": "npm:buffer@4.9.1"
+      }
+    },
+    "npm:debug@2.3.3": {
+      "map": {
+        "ms": "npm:ms@0.7.2"
+      }
+    },
+    "npm:babel-traverse@6.19.0": {
+      "map": {
+        "babel-code-frame": "npm:babel-code-frame@6.16.0",
+        "babel-messages": "npm:babel-messages@6.8.0",
+        "babel-runtime": "npm:babel-runtime@6.18.0",
+        "globals": "npm:globals@9.14.0",
+        "invariant": "npm:invariant@2.2.2",
+        "babel-types": "npm:babel-types@6.19.0",
+        "babylon": "npm:babylon@6.14.1",
+        "debug": "npm:debug@2.3.3",
+        "lodash": "npm:lodash@4.17.2"
+      }
+    },
+    "npm:babel-generator@6.19.0": {
+      "map": {
+        "babel-messages": "npm:babel-messages@6.8.0",
+        "babel-runtime": "npm:babel-runtime@6.18.0",
+        "detect-indent": "npm:detect-indent@4.0.0",
+        "jsesc": "npm:jsesc@1.3.0",
+        "source-map": "npm:source-map@0.5.6",
+        "babel-types": "npm:babel-types@6.19.0",
+        "lodash": "npm:lodash@4.17.2"
+      }
+    },
+    "npm:babel-types@6.19.0": {
+      "map": {
+        "babel-runtime": "npm:babel-runtime@6.18.0",
+        "esutils": "npm:esutils@2.0.2",
+        "to-fast-properties": "npm:to-fast-properties@1.0.2",
+        "lodash": "npm:lodash@4.17.2"
+      }
+    },
+    "npm:invariant@2.2.2": {
+      "map": {
+        "loose-envify": "npm:loose-envify@1.3.0"
+      }
+    },
+    "npm:loose-envify@1.3.0": {
+      "map": {
+        "js-tokens": "npm:js-tokens@2.0.0"
+      }
+    },
+    "npm:sha.js@2.4.8": {
+      "map": {
+        "inherits": "npm:inherits@2.0.3"
+      }
+    },
+    "npm:asn1.js@4.9.0": {
+      "map": {
+        "bn.js": "npm:bn.js@4.11.6",
+        "inherits": "npm:inherits@2.0.3",
+        "minimalistic-assert": "npm:minimalistic-assert@1.0.0"
+      }
+    },
+    "npm:readable-stream@2.2.2": {
+      "map": {
+        "isarray": "npm:isarray@1.0.0",
+        "inherits": "npm:inherits@2.0.3",
+        "string_decoder": "npm:string_decoder@0.10.31",
+        "util-deprecate": "npm:util-deprecate@1.0.2",
+        "process-nextick-args": "npm:process-nextick-args@1.0.7",
+        "buffer-shims": "npm:buffer-shims@1.0.0",
+        "core-util-is": "npm:core-util-is@1.0.2"
+      }
+    },
+    "npm:source-map-support@0.4.6": {
+      "map": {
+        "source-map": "npm:source-map@0.5.6"
       }
     }
   }

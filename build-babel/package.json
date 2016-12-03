@@ -2,6 +2,7 @@
   "jspm": {
     "dependencies": {
       "babel": "npm:babel-core@^6.3.17",
+      "babel-core": "npm:babel-core@^6.18.2",
       "babel-helpers": "npm:babel-helpers@^6.3.13",
       "babel-plugin-check-es2015-constants": "npm:babel-plugin-check-es2015-constants@^6.3.13",
       "babel-plugin-external-helpers": "npm:babel-plugin-external-helpers@^6.3.13",
@@ -14,7 +15,7 @@
       "babel-plugin-transform-es2015-for-of": "npm:babel-plugin-transform-es2015-for-of@^6.3.13",
       "babel-plugin-transform-es2015-function-name": "npm:babel-plugin-transform-es2015-function-name@^6.3.19",
       "babel-plugin-transform-es2015-literals": "npm:babel-plugin-transform-es2015-literals@^6.3.13",
-      "babel-plugin-transform-es2015-modules-systemjs": "npm:babel-plugin-transform-es2015-modules-systemjs@^6.3.13",
+      "babel-plugin-transform-es2015-modules-systemjs": "npm:babel-plugin-transform-es2015-modules-systemjs@^6.19.0",
       "babel-plugin-transform-es2015-object-super": "npm:babel-plugin-transform-es2015-object-super@^6.3.13",
       "babel-plugin-transform-es2015-parameters": "npm:babel-plugin-transform-es2015-parameters@^6.3.18",
       "babel-plugin-transform-es2015-shorthand-properties": "npm:babel-plugin-transform-es2015-shorthand-properties@^6.3.13",
@@ -38,25 +39,35 @@
       "assert": "npm:jspm-nodelibs-assert@^0.2.0",
       "buffer": "npm:jspm-nodelibs-buffer@^0.2.0",
       "child_process": "npm:jspm-nodelibs-child_process@^0.2.0",
-      "constants": "github:jspm/nodelibs-constants@^0.2.0-alpha",
-      "crypto": "github:jspm/nodelibs-crypto@^0.2.0-alpha",
+      "constants": "npm:jspm-nodelibs-constants@^0.2.0",
+      "crypto": "npm:jspm-nodelibs-crypto@^0.2.0",
       "events": "npm:jspm-nodelibs-events@^0.2.0",
       "fs": "npm:jspm-nodelibs-fs@^0.2.0",
       "http": "npm:jspm-nodelibs-http@^0.2.0",
       "module": "npm:jspm-nodelibs-module@^0.2.0",
-      "net": "github:jspm/nodelibs-net@^0.2.0-alpha",
-      "os": "github:jspm/nodelibs-os@^0.2.0-alpha",
+      "net": "npm:jspm-nodelibs-net@^0.2.0",
+      "os": "npm:jspm-nodelibs-os@^0.2.0",
       "path": "npm:jspm-nodelibs-path@^0.2.0",
-      "process": "github:jspm/nodelibs-process@^0.2.0-alpha",
-      "stream": "github:jspm/nodelibs-stream@^0.2.0-alpha",
-      "string_decoder": "github:jspm/nodelibs-string_decoder@^0.2.0-alpha",
-      "tty": "github:jspm/nodelibs-tty@^0.2.0-alpha",
+      "process": "npm:jspm-nodelibs-process@^0.2.0",
+      "stream": "npm:jspm-nodelibs-stream@^0.2.0",
+      "string_decoder": "npm:jspm-nodelibs-string_decoder@^0.2.0",
+      "tty": "npm:jspm-nodelibs-tty@^0.2.0",
       "url": "npm:jspm-nodelibs-url@^0.2.0",
       "util": "npm:jspm-nodelibs-util@^0.2.0",
-      "vm": "github:jspm/nodelibs-vm@^0.2.0-alpha"
+      "vm": "npm:jspm-nodelibs-vm@^0.2.0"
     },
     "overrides": {
       "npm:debug@2.2.0": {
+        "main": "browser.js",
+        "jspmNodeConversion": false,
+        "format": "cjs",
+        "map": {
+          "./node.js": {
+            "browser": "./browser.js"
+          }
+        }
+      },
+      "npm:debug@2.3.3": {
         "main": "browser.js",
         "jspmNodeConversion": false,
         "format": "cjs",
@@ -77,7 +88,17 @@
           "process": "@empty"
         }
       },
+      "npm:lodash@4.17.2": {
+        "map": {
+          "buffer": "@empty",
+          "process": "@empty"
+        }
+      },
       "npm:ms@0.7.1": {
+        "jspmNodeConversion": false,
+        "format": "cjs"
+      },
+      "npm:ms@0.7.2": {
         "jspmNodeConversion": false,
         "format": "cjs"
       },
