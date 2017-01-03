@@ -21,7 +21,7 @@ test('systemjs-plugin-babel', function (t) {
   // then
   .then(function(m) {
     return m.p().then(function (message) {
-      t.equal(message, 'Rocks :)');
+      t.equal(message, 5);
     });
   })
   .then(t.end, t.end);

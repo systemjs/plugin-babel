@@ -17,6 +17,7 @@ SystemJS.config({
     "github:*/*.json"
   ],
   map: {
+    "babel-plugin-syntax-dynamic-import": "npm:babel-plugin-syntax-dynamic-import@6.18.0",
     "debug": "npm:debug@2.6.0",
     "babel-core": "npm:babel-core@6.21.0",
     "constants": "npm:jspm-nodelibs-constants@0.2.0",
