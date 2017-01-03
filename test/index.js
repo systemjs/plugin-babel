@@ -1,7 +1,7 @@
 'use strict';
 
 var test = require('tape');
-var SystemJS = require('systemjs');
+var System = require('systemjs');
 
 test('systemjs-plugin-babel', function (t) {
   t.plan(1);
