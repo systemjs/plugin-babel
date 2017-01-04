@@ -6,6 +6,7 @@
       "babel-helpers": "npm:babel-helpers@^6.3.13",
       "babel-plugin-check-es2015-constants": "npm:babel-plugin-check-es2015-constants@^6.3.13",
       "babel-plugin-external-helpers": "npm:babel-plugin-external-helpers@^6.3.13",
+      "babel-plugin-syntax-dynamic-import": "npm:babel-plugin-syntax-dynamic-import@^6.18.0",
       "babel-plugin-transform-es2015-arrow-functions": "npm:babel-plugin-transform-es2015-arrow-functions@^6.3.13",
       "babel-plugin-transform-es2015-block-scoped-functions": "npm:babel-plugin-transform-es2015-block-scoped-functions@^6.3.13",
       "babel-plugin-transform-es2015-block-scoping": "npm:babel-plugin-transform-es2015-block-scoping@^6.3.13",
@@ -30,7 +31,8 @@
       "babel-preset-stage-2": "npm:babel-preset-stage-2@^6.5.0",
       "babel-preset-stage-3": "npm:babel-preset-stage-3@^6.3.13",
       "core-js": "npm:core-js@^2.4.0",
-      "regenerator-runtime": "npm:regenerator-runtime@^0.9.5"
+      "debug": "npm:debug@^2.6.0",
+      "regenerator-runtime": "npm:regenerator-runtime@^0.10.1"
     },
     "devDependencies": {
       "plugin-babel": "npm:systemjs-plugin-babel@^0.0.16"
@@ -57,24 +59,21 @@
       "vm": "npm:jspm-nodelibs-vm@^0.2.0"
     },
     "overrides": {
-      "npm:debug@2.2.0": {
-        "main": "browser.js",
+      "npm:debug@2.6.0": {
+        "main": "src/browser.js",
         "jspmNodeConversion": false,
         "format": "cjs",
         "map": {
+          "./src/browser.js": {
+            "node": "./src/node.js"
+          },
           "./node.js": {
-            "browser": "./browser.js"
-          }
-        }
-      },
-      "npm:debug@2.3.3": {
-        "main": "browser.js",
-        "jspmNodeConversion": false,
-        "format": "cjs",
-        "map": {
-          "./node.js": {
-            "browser": "./browser.js"
-          }
+            "browser": "./src/browser.js"
+          },
+          "fs": "@node/fs",
+          "net": "@node/net",
+          "tty": "@node/tty",
+          "util": "@node/util"
         }
       },
       "npm:inherits@2.0.3": {
@@ -82,21 +81,11 @@
           "test.js"
         ]
       },
-      "npm:lodash@4.16.4": {
+      "npm:lodash@4.17.4": {
         "map": {
           "buffer": "@empty",
           "process": "@empty"
         }
-      },
-      "npm:lodash@4.17.2": {
-        "map": {
-          "buffer": "@empty",
-          "process": "@empty"
-        }
-      },
-      "npm:ms@0.7.1": {
-        "jspmNodeConversion": false,
-        "format": "cjs"
       },
       "npm:ms@0.7.2": {
         "jspmNodeConversion": false,
@@ -123,7 +112,7 @@
           }
         }
       },
-      "npm:stream-http@2.4.0": {
+      "npm:stream-http@2.5.0": {
         "map": {
           "./index.js": {
             "node": "@node/http"
