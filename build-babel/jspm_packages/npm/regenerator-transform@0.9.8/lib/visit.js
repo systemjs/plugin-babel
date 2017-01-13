@@ -70,7 +70,14 @@ exports.visitor = {
 
       bodyBlockPath.get("body").forEach(function (childPath) {
         var node = childPath.node;
-        if (node && node._blockHoist != null) {
+        if (t.isExpressionStatement(node) && t.isStringLiteral(node.expression)) {
+          // Babylon represents directives like "use strict" as elements
+          // of a bodyBlockPath.node.directives array, but they could just
+          // as easily be represented (by other parsers) as traditional
+          // string-literal-valued expression statements, so we need to
+          // handle that here. (#248)
+          outerBody.push(node);
+        } else if (node && node._blockHoist != null) {
           outerBody.push(node);
         } else {
           innerBody.push(node);
@@ -122,6 +129,13 @@ exports.visitor = {
 
       outerBody.push(t.returnStatement(wrapCall));
       node.body = t.blockStatement(outerBody);
+
+      var oldDirectives = bodyBlockPath.node.directives;
+      if (oldDirectives) {
+        // Babylon represents directives like "use strict" as elements of
+        // a bodyBlockPath.node.directives array. (#248)
+        node.body.directives = oldDirectives;
+      }
 
       var wasGeneratorFunction = node.generator;
       if (wasGeneratorFunction) {
