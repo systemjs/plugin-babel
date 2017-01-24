@@ -1,4 +1,4 @@
-import * as babel from 'babel';
+import babel from 'babel';
 export { babel };
 
 import dynamicImportSyntax from 'babel-plugin-syntax-dynamic-import';
@@ -17,9 +17,15 @@ export let runtimeTransform = {
   plugins: [[runtimeTransformPlugin, { polyfill: false }]]
 };
 
-export { plugins as pluginsStage1 } from 'babel-preset-stage-1';
-export { plugins as pluginsStage2 } from 'babel-preset-stage-2';
-export { plugins as pluginsStage3 } from 'babel-preset-stage-3';
+import p1 from 'babel-preset-stage-1';
+import p2 from 'babel-preset-stage-2';
+import p3 from 'babel-preset-stage-3';
+
+let pluginsStage1 = p1.plugins;
+let pluginsStage2 = p2.plugins;
+let pluginsStage3 = p3.plugins;
+
+export { pluginsStage1, pluginsStage2, pluginsStage3 }
 
 // ES2015 plugins to keep in sync with https://github.com/babel/babel/blob/master/packages/babel-preset-es2015/index.js
 import templateLiterals from 'babel-plugin-transform-es2015-template-literals';
