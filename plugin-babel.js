@@ -7,6 +7,7 @@ var modulesRegister = require('systemjs-babel-build').modulesRegister;
 var stage3 = require('systemjs-babel-build').pluginsStage3;
 var stage2 = require('systemjs-babel-build').pluginsStage2;
 var stage1 = require('systemjs-babel-build').pluginsStage1;
+var react = require('systemjs-babel-build').pluginsReact;
 
 var externalHelpers = require('systemjs-babel-build').externalHelpers;
 var runtimeTransform = require('systemjs-babel-build').runtimeTransform;
@@ -44,6 +45,7 @@ function prepend(a, b) {
  *   stage3: true / false (defaults to true)
  *   stage2: true / false (defaults to true)
  *   stage1: true / false (defaults to false)
+ *   react: true / false (defaults to false)
  *   plugins: array of custom plugins (objects or module name strings)
  *   presets: array of custom presets (objects or module name strings)
  *   compact: as in Babel
@@ -58,6 +60,7 @@ var defaultBabelOptions = {
   stage3: true,
   stage2: true,
   stage1: false,
+  react: false,
   compact: false,
   comments: true
 };
@@ -146,6 +149,11 @@ exports.translate = function(load, traceOpts) {
     if (babelOptions.stage1)
       presets.push({
         plugins: stage1
+      });
+
+    if (babelOptions.react)
+      presets.push({
+        plugins: react
       });
 
     if (babelOptions.presets)
