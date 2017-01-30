@@ -20,12 +20,14 @@ export let runtimeTransform = {
 import p1 from 'babel-preset-stage-1';
 import p2 from 'babel-preset-stage-2';
 import p3 from 'babel-preset-stage-3';
+import pReact from 'babel-preset-react';
 
 let pluginsStage1 = p1.plugins;
 let pluginsStage2 = p2.plugins;
 let pluginsStage3 = p3.plugins;
+let pluginsReact  = pReact.plugins;
 
-export { pluginsStage1, pluginsStage2, pluginsStage3 }
+export { pluginsStage1, pluginsStage2, pluginsStage3, pluginsReact }
 
 // ES2015 plugins to keep in sync with https://github.com/babel/babel/blob/master/packages/babel-preset-es2015/index.js
 import templateLiterals from 'babel-plugin-transform-es2015-template-literals';

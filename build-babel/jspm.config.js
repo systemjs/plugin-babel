@@ -1,12 +1,110 @@
 SystemJS.config({
   devConfig: {
     "map": {
-      "plugin-babel": "npm:systemjs-plugin-babel@0.0.16"
+      "plugin-babel": "npm:systemjs-plugin-babel@0.0.16",
+      "babel-runtime": "npm:babel-runtime@5.8.38",
+      "babel-preset-react": "npm:babel-preset-react@6.22.0"
+    },
+    "packages": {
+      "npm:babel-preset-react@6.22.0": {
+        "map": {
+          "babel-plugin-syntax-flow": "npm:babel-plugin-syntax-flow@6.18.0",
+          "babel-plugin-syntax-jsx": "npm:babel-plugin-syntax-jsx@6.18.0",
+          "babel-plugin-transform-flow-strip-types": "npm:babel-plugin-transform-flow-strip-types@6.22.0",
+          "babel-plugin-transform-react-display-name": "npm:babel-plugin-transform-react-display-name@6.22.0",
+          "babel-plugin-transform-react-jsx": "npm:babel-plugin-transform-react-jsx@6.22.0",
+          "babel-plugin-transform-react-jsx-self": "npm:babel-plugin-transform-react-jsx-self@6.22.0",
+          "babel-plugin-transform-react-jsx-source": "npm:babel-plugin-transform-react-jsx-source@6.22.0"
+        }
+      },
+      "npm:babel-plugin-transform-flow-strip-types@6.22.0": {
+        "map": {
+          "babel-plugin-syntax-flow": "npm:babel-plugin-syntax-flow@6.18.0",
+          "babel-runtime": "npm:babel-runtime@6.22.0"
+        }
+      },
+      "npm:babel-plugin-transform-react-jsx@6.22.0": {
+        "map": {
+          "babel-plugin-syntax-jsx": "npm:babel-plugin-syntax-jsx@6.18.0",
+          "babel-runtime": "npm:babel-runtime@6.22.0",
+          "babel-helper-builder-react-jsx": "npm:babel-helper-builder-react-jsx@6.22.0"
+        }
+      },
+      "npm:babel-plugin-transform-react-jsx-self@6.22.0": {
+        "map": {
+          "babel-plugin-syntax-jsx": "npm:babel-plugin-syntax-jsx@6.18.0",
+          "babel-runtime": "npm:babel-runtime@6.22.0"
+        }
+      },
+      "npm:babel-plugin-transform-react-jsx-source@6.22.0": {
+        "map": {
+          "babel-plugin-syntax-jsx": "npm:babel-plugin-syntax-jsx@6.18.0",
+          "babel-runtime": "npm:babel-runtime@6.22.0"
+        }
+      },
+      "npm:babel-plugin-transform-react-display-name@6.22.0": {
+        "map": {
+          "babel-runtime": "npm:babel-runtime@6.22.0"
+        }
+      },
+      "npm:babel-helper-builder-react-jsx@6.22.0": {
+        "map": {
+          "babel-runtime": "npm:babel-runtime@6.22.0",
+          "lodash": "npm:lodash@4.17.4",
+          "babel-types": "npm:babel-types@6.22.0",
+          "esutils": "npm:esutils@2.0.2"
+        }
+      },
+      "npm:babel-runtime@6.22.0": {
+        "map": {
+          "regenerator-runtime": "npm:regenerator-runtime@0.10.1",
+          "core-js": "npm:core-js@2.4.1"
+        }
+      },
+      "npm:babel-types@6.22.0": {
+        "map": {
+          "esutils": "npm:esutils@2.0.2",
+          "lodash": "npm:lodash@4.17.4",
+          "babel-runtime": "npm:babel-runtime@6.22.0",
+          "to-fast-properties": "npm:to-fast-properties@1.0.2"
+        }
+      }
     }
   },
   transpiler: "plugin-babel",
   map: {
-    "regenerator": "github:facebook/regenerator@0.8.46"
+    "regenerator": "github:facebook/regenerator@0.8.46",
+    "http": "npm:jspm-nodelibs-http@0.2.0",
+    "net": "npm:jspm-nodelibs-net@0.2.0",
+    "tty": "npm:jspm-nodelibs-tty@0.2.0",
+    "url": "npm:jspm-nodelibs-url@0.2.0"
+  },
+  packages: {
+    "npm:url@0.11.0": {
+      "map": {
+        "punycode": "npm:punycode@1.3.2",
+        "querystring": "npm:querystring@0.2.0"
+      }
+    },
+    "npm:jspm-nodelibs-http@0.2.0": {
+      "map": {
+        "http-browserify": "npm:stream-http@2.5.0"
+      }
+    },
+    "npm:jspm-nodelibs-url@0.2.0": {
+      "map": {
+        "url-browserify": "npm:url@0.11.0"
+      }
+    },
+    "npm:stream-http@2.5.0": {
+      "map": {
+        "builtin-status-codes": "npm:builtin-status-codes@2.0.0",
+        "readable-stream": "npm:readable-stream@2.2.2",
+        "to-arraybuffer": "npm:to-arraybuffer@1.0.1",
+        "xtend": "npm:xtend@4.0.1",
+        "inherits": "npm:inherits@2.0.3"
+      }
+    }
   }
 });
 
@@ -55,17 +153,13 @@ SystemJS.config({
     "child_process": "npm:jspm-nodelibs-child_process@0.2.0",
     "events": "npm:jspm-nodelibs-events@0.2.0",
     "fs": "npm:jspm-nodelibs-fs@0.2.0",
-    "http": "npm:jspm-nodelibs-http@0.2.0",
     "module": "npm:jspm-nodelibs-module@0.2.0",
-    "net": "npm:jspm-nodelibs-net@0.2.0",
     "os": "npm:jspm-nodelibs-os@0.2.0",
     "path": "npm:jspm-nodelibs-path@0.2.1",
     "process": "npm:jspm-nodelibs-process@0.2.0",
     "regenerator-runtime": "npm:regenerator-runtime@0.10.1",
     "stream": "npm:jspm-nodelibs-stream@0.2.0",
     "string_decoder": "npm:jspm-nodelibs-string_decoder@0.2.0",
-    "tty": "npm:jspm-nodelibs-tty@0.2.0",
-    "url": "npm:jspm-nodelibs-url@0.2.0",
     "util": "npm:jspm-nodelibs-util@0.2.1",
     "vm": "npm:jspm-nodelibs-vm@0.2.0"
   },
@@ -171,12 +265,6 @@ SystemJS.config({
       "map": {
         "inherits": "npm:inherits@2.0.3",
         "readable-stream": "npm:readable-stream@2.2.2"
-      }
-    },
-    "npm:url@0.11.0": {
-      "map": {
-        "punycode": "npm:punycode@1.3.2",
-        "querystring": "npm:querystring@0.2.0"
       }
     },
     "npm:babel-plugin-transform-es2015-function-name@6.9.0": {
@@ -587,16 +675,6 @@ SystemJS.config({
         "is-finite": "npm:is-finite@1.0.2"
       }
     },
-    "npm:jspm-nodelibs-http@0.2.0": {
-      "map": {
-        "http-browserify": "npm:stream-http@2.5.0"
-      }
-    },
-    "npm:jspm-nodelibs-url@0.2.0": {
-      "map": {
-        "url-browserify": "npm:url@0.11.0"
-      }
-    },
     "npm:jspm-nodelibs-os@0.2.0": {
       "map": {
         "os-browserify": "npm:os-browserify@0.2.1"
@@ -731,15 +809,6 @@ SystemJS.config({
         "lodash": "npm:lodash@4.17.4",
         "detect-indent": "npm:detect-indent@4.0.0",
         "jsesc": "npm:jsesc@1.3.0"
-      }
-    },
-    "npm:stream-http@2.5.0": {
-      "map": {
-        "builtin-status-codes": "npm:builtin-status-codes@2.0.0",
-        "readable-stream": "npm:readable-stream@2.2.2",
-        "to-arraybuffer": "npm:to-arraybuffer@1.0.1",
-        "xtend": "npm:xtend@4.0.1",
-        "inherits": "npm:inherits@2.0.3"
       }
     },
     "npm:babel-code-frame@6.20.0": {
