@@ -73,6 +73,20 @@ SystemJS.config({
 
 This allows workflows that just support ES modules and stage proposal transforms.
 
+### React JSX
+
+To use React with JSX support set:
+
+```javascript
+SystemJS.config({
+  meta: {
+    '*.js': {
+      react: true
+    }
+  }
+});
+```
+
 ### Building and Bundling
 
 Build support works with no further configuration through the standard jspm build and bundle commands.

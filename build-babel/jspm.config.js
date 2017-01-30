@@ -1,78 +1,12 @@
 SystemJS.config({
   devConfig: {
     "map": {
-      "plugin-babel": "npm:systemjs-plugin-babel@0.0.16",
-      "babel-runtime": "npm:babel-runtime@5.8.38",
-      "babel-preset-react": "npm:babel-preset-react@6.22.0"
-    },
-    "packages": {
-      "npm:babel-preset-react@6.22.0": {
-        "map": {
-          "babel-plugin-syntax-flow": "npm:babel-plugin-syntax-flow@6.18.0",
-          "babel-plugin-syntax-jsx": "npm:babel-plugin-syntax-jsx@6.18.0",
-          "babel-plugin-transform-flow-strip-types": "npm:babel-plugin-transform-flow-strip-types@6.22.0",
-          "babel-plugin-transform-react-display-name": "npm:babel-plugin-transform-react-display-name@6.22.0",
-          "babel-plugin-transform-react-jsx": "npm:babel-plugin-transform-react-jsx@6.22.0",
-          "babel-plugin-transform-react-jsx-self": "npm:babel-plugin-transform-react-jsx-self@6.22.0",
-          "babel-plugin-transform-react-jsx-source": "npm:babel-plugin-transform-react-jsx-source@6.22.0"
-        }
-      },
-      "npm:babel-plugin-transform-flow-strip-types@6.22.0": {
-        "map": {
-          "babel-plugin-syntax-flow": "npm:babel-plugin-syntax-flow@6.18.0",
-          "babel-runtime": "npm:babel-runtime@6.22.0"
-        }
-      },
-      "npm:babel-plugin-transform-react-jsx@6.22.0": {
-        "map": {
-          "babel-plugin-syntax-jsx": "npm:babel-plugin-syntax-jsx@6.18.0",
-          "babel-runtime": "npm:babel-runtime@6.22.0",
-          "babel-helper-builder-react-jsx": "npm:babel-helper-builder-react-jsx@6.22.0"
-        }
-      },
-      "npm:babel-plugin-transform-react-jsx-self@6.22.0": {
-        "map": {
-          "babel-plugin-syntax-jsx": "npm:babel-plugin-syntax-jsx@6.18.0",
-          "babel-runtime": "npm:babel-runtime@6.22.0"
-        }
-      },
-      "npm:babel-plugin-transform-react-jsx-source@6.22.0": {
-        "map": {
-          "babel-plugin-syntax-jsx": "npm:babel-plugin-syntax-jsx@6.18.0",
-          "babel-runtime": "npm:babel-runtime@6.22.0"
-        }
-      },
-      "npm:babel-plugin-transform-react-display-name@6.22.0": {
-        "map": {
-          "babel-runtime": "npm:babel-runtime@6.22.0"
-        }
-      },
-      "npm:babel-helper-builder-react-jsx@6.22.0": {
-        "map": {
-          "babel-runtime": "npm:babel-runtime@6.22.0",
-          "lodash": "npm:lodash@4.17.4",
-          "babel-types": "npm:babel-types@6.22.0",
-          "esutils": "npm:esutils@2.0.2"
-        }
-      },
-      "npm:babel-runtime@6.22.0": {
-        "map": {
-          "regenerator-runtime": "npm:regenerator-runtime@0.10.1",
-          "core-js": "npm:core-js@2.4.1"
-        }
-      },
-      "npm:babel-types@6.22.0": {
-        "map": {
-          "esutils": "npm:esutils@2.0.2",
-          "lodash": "npm:lodash@4.17.4",
-          "babel-runtime": "npm:babel-runtime@6.22.0",
-          "to-fast-properties": "npm:to-fast-properties@1.0.2"
-        }
-      }
+      "plugin-babel": "npm:systemjs-plugin-babel@0.0.16"
     }
   },
   transpiler: "plugin-babel",
   map: {
+    "babel-runtime": "npm:babel-runtime@5.8.38",
     "regenerator": "github:facebook/regenerator@0.8.46",
     "http": "npm:jspm-nodelibs-http@0.2.0",
     "net": "npm:jspm-nodelibs-net@0.2.0",
@@ -115,6 +49,7 @@ SystemJS.config({
     "github:*/*.json"
   ],
   map: {
+    "babel-preset-react": "npm:babel-preset-react@6.22.0",
     "babel-plugin-syntax-dynamic-import": "npm:babel-plugin-syntax-dynamic-import@6.18.0",
     "debug": "npm:debug@2.6.0",
     "babel-core": "npm:babel-core@6.21.0",
@@ -875,6 +810,69 @@ SystemJS.config({
         "bn.js": "npm:bn.js@4.11.6",
         "inherits": "npm:inherits@2.0.3",
         "minimalistic-assert": "npm:minimalistic-assert@1.0.0"
+      }
+    },
+    "npm:babel-preset-react@6.22.0": {
+      "map": {
+        "babel-plugin-syntax-flow": "npm:babel-plugin-syntax-flow@6.18.0",
+        "babel-plugin-syntax-jsx": "npm:babel-plugin-syntax-jsx@6.18.0",
+        "babel-plugin-transform-flow-strip-types": "npm:babel-plugin-transform-flow-strip-types@6.22.0",
+        "babel-plugin-transform-react-display-name": "npm:babel-plugin-transform-react-display-name@6.22.0",
+        "babel-plugin-transform-react-jsx": "npm:babel-plugin-transform-react-jsx@6.22.0",
+        "babel-plugin-transform-react-jsx-self": "npm:babel-plugin-transform-react-jsx-self@6.22.0",
+        "babel-plugin-transform-react-jsx-source": "npm:babel-plugin-transform-react-jsx-source@6.22.0"
+      }
+    },
+    "npm:babel-plugin-transform-flow-strip-types@6.22.0": {
+      "map": {
+        "babel-plugin-syntax-flow": "npm:babel-plugin-syntax-flow@6.18.0",
+        "babel-runtime": "npm:babel-runtime@6.22.0"
+      }
+    },
+    "npm:babel-plugin-transform-react-jsx@6.22.0": {
+      "map": {
+        "babel-plugin-syntax-jsx": "npm:babel-plugin-syntax-jsx@6.18.0",
+        "babel-runtime": "npm:babel-runtime@6.22.0",
+        "babel-helper-builder-react-jsx": "npm:babel-helper-builder-react-jsx@6.22.0"
+      }
+    },
+    "npm:babel-plugin-transform-react-jsx-self@6.22.0": {
+      "map": {
+        "babel-plugin-syntax-jsx": "npm:babel-plugin-syntax-jsx@6.18.0",
+        "babel-runtime": "npm:babel-runtime@6.22.0"
+      }
+    },
+    "npm:babel-plugin-transform-react-jsx-source@6.22.0": {
+      "map": {
+        "babel-plugin-syntax-jsx": "npm:babel-plugin-syntax-jsx@6.18.0",
+        "babel-runtime": "npm:babel-runtime@6.22.0"
+      }
+    },
+    "npm:babel-plugin-transform-react-display-name@6.22.0": {
+      "map": {
+        "babel-runtime": "npm:babel-runtime@6.22.0"
+      }
+    },
+    "npm:babel-helper-builder-react-jsx@6.22.0": {
+      "map": {
+        "babel-runtime": "npm:babel-runtime@6.22.0",
+        "lodash": "npm:lodash@4.17.4",
+        "babel-types": "npm:babel-types@6.22.0",
+        "esutils": "npm:esutils@2.0.2"
+      }
+    },
+    "npm:babel-runtime@6.22.0": {
+      "map": {
+        "regenerator-runtime": "npm:regenerator-runtime@0.10.1",
+        "core-js": "npm:core-js@2.4.1"
+      }
+    },
+    "npm:babel-types@6.22.0": {
+      "map": {
+        "esutils": "npm:esutils@2.0.2",
+        "lodash": "npm:lodash@4.17.4",
+        "babel-runtime": "npm:babel-runtime@6.22.0",
+        "to-fast-properties": "npm:to-fast-properties@1.0.2"
       }
     }
   }
