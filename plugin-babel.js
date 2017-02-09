@@ -100,15 +100,9 @@ exports.translate = function(load, traceOpts) {
       plugin = typeof plugin == 'string' ? plugin : Array.isArray(plugin) && typeof plugin[0] == 'string' && plugin[0];
       if (!plugin)
         return;
-      pluginAndPresetModuleLoads.push(
-        pluginLoader.normalize(plugin, module.id)
-        .then(function(normalized) {
-          return pluginLoader.load(normalized)
-          .then(function() {
-            return pluginLoader.get(normalized)['default'];
-          });
-        })
-      );
+      pluginAndPresetModuleLoads.push(pluginLoader.import(plugin, module.id).then(function (m) {
+        return m.default || m;
+      }));
     });
 
   return Promise.all(pluginAndPresetModuleLoads)
