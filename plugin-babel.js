@@ -191,6 +191,8 @@ exports.translate = function(load, traceOpts) {
         else if (m.substr(0, 14) == 'babel-runtime/') {
           if (!babelRuntimePath) {
             babelRuntimePath = System.decanonicalize('babel-runtime/', module.id);
+            if (babelRuntimePath[babelRuntimePath.length - 1] !== '/')
+              babelRuntimePath += '/';
             if (babelRuntimePath.substr(babelRuntimePath.length - 3, 3) == '.js')
               babelRuntimePath = babelRuntimePath.substr(0, babelRuntimePath.length - 3);
             if (loader.getCanonicalName)
