@@ -81,7 +81,9 @@ To use React with JSX support set:
 SystemJS.config({
   meta: {
     '*.js': {
-      react: true
+      babelOptions: {
+        react: true
+      }
     }
   }
 });
