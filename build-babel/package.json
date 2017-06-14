@@ -31,6 +31,7 @@
       "babel-preset-stage-1": "npm:babel-preset-stage-1@^6.5.0",
       "babel-preset-stage-2": "npm:babel-preset-stage-2@^6.5.0",
       "babel-preset-stage-3": "npm:babel-preset-stage-3@^6.3.13",
+      "babel-runtime": "npm:babel-runtime@^6.23.0",
       "core-js": "npm:core-js@^2.4.0",
       "debug": "npm:debug@^2.6.0",
       "regenerator-runtime": "npm:regenerator-runtime@^0.10.1"
@@ -56,14 +57,7 @@
       "vm": "npm:jspm-nodelibs-vm@^0.2.0"
     },
     "overrides": {
-      "npm:babel-runtime@5.8.38": {
-        "main": false,
-        "dependencies": {},
-        "optionalDependencies": {
-          "core-js": "^1.2.0"
-        }
-      },
-      "npm:debug@2.6.0": {
+      "npm:debug@2.6.8": {
         "main": "src/browser.js",
         "jspmNodeConversion": false,
         "format": "cjs",
@@ -91,16 +85,14 @@
           "process": "@empty"
         }
       },
-      "npm:ms@0.7.2": {
-        "jspmNodeConversion": false,
-        "format": "cjs"
+      "npm:pbkdf2@3.0.12": {
+        "main": "browser.js"
       },
-      "npm:querystring@0.2.0": {
-        "map": {
-          "./index.js": {
-            "node": "@node/querystring"
-          }
-        }
+      "npm:safe-buffer@5.0.1": {
+        "browser": "index.js"
+      },
+      "npm:safe-buffer@5.1.0": {
+        "browser": "index.js"
       },
       "npm:string_decoder@0.10.31": {
         "map": {
