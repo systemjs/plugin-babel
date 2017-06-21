@@ -11,7 +11,7 @@ cd $BUILD_DIR
 cp -r jspm_packages_override/* jspm_packages
 
 jspm build systemjs-babel.js ../systemjs-babel-browser.js --format amd --skip-source-maps --skip-rollup --minify --log ok
-jspm build systemjs-babel.js ../systemjs-babel-node.js --format amd --node --skip-source-maps --skip-rollup --log ok 
+jspm build systemjs-babel.js ../systemjs-babel-node.js --format amd --node --skip-source-maps --skip-rollup --log ok --config node-build.json
 jspm run systemjs-build-babel-helpers.js > ../babel-helpers.js
 jspm run systemjs-build-modular-babel-helpers.js
 # (

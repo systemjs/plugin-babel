@@ -17,6 +17,7 @@ SystemJS.config({
     "babel-runtime": "npm:babel-runtime@6.23.0",
     "babel-preset-react": "npm:babel-preset-react@6.24.1",
     "babel-plugin-syntax-dynamic-import": "npm:babel-plugin-syntax-dynamic-import@6.18.0",
+    "color-convert": "npm:color-convert@1.9.0",
     "debug": "npm:debug@2.6.8",
     "babel-core": "npm:babel-core@6.25.0",
     "constants": "npm:jspm-nodelibs-constants@0.2.1",
@@ -865,6 +866,11 @@ SystemJS.config({
         "hash.js": "npm:hash.js@1.0.3",
         "minimalistic-assert": "npm:minimalistic-assert@1.0.0",
         "minimalistic-crypto-utils": "npm:minimalistic-crypto-utils@1.0.1"
+      }
+    },
+    "npm:color-convert@1.9.0": {
+      "map": {
+        "color-name": "npm:color-name@1.1.2"
       }
     }
   }

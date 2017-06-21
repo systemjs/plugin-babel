@@ -1,0 +1,11 @@
+{
+  "map": {
+    "npm:chalk@1.1.3": {
+      "ansi-styles": "ansi-styles.js",
+        "escape-string-regexp": "npm:escape-string-regexp@1.0.5",
+        "has-ansi": "npm:has-ansi@2.0.0",
+        "strip-ansi": "npm:strip-ansi@3.0.1",
+        "supports-color": "npm:supports-color@2.0.0"
+    }
+  }
+}
