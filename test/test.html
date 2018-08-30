@@ -1,0 +1,13 @@
+<!doctype html>
+  <script src="../../systemjs/dist/system.js"></script>
+  <script src="../../systemjs/dist/extras/transform.js"></script>
+  <script src="../dist/babel-transform.js"></script>
+  <script>
+    System.import('./testing-code.js')
+    .then(function (m) {
+      return m.p();
+    })
+    .then(function (result) {
+      console.log(result);
+    });
+  </script>
