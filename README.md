@@ -5,7 +5,7 @@ SystemJS Babel Plugin
 
 Provides Babel transpilation in the browser and in builds when using SystemJS 0.19.12+ and SystemJS Builder 0.15+.
 
-Compatible with the the automatic Rollup optimizations in SystemJS Builder.
+Compatible with the automatic Rollup optimizations in SystemJS Builder.
 
 ## Usage
 
