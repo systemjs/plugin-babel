@@ -1,8 +1,6 @@
 {
   "name": "systemjs-plugin-babel",
-  "version": "0.0.25",
-  "registry": "npm",
-  "jspmPackage": true,
+  "version": "2.0.0",
   "repository": {
     "type": "git",
     "url": "http://github.com/systemjs/plugin-babel.git"
@@ -12,35 +10,15 @@
     "url": "https://github.com/systemjs/plugin-babel/issues"
   },
   "homepage": "https://github.com/systemjs/plugin-babel",
-  "scripts": {
-    "build": "./build.sh",
-    "clear": "rm -rf build-babel/node_modules build-babel/jspm_packages regenerator-runtime.js systemjs-babel-node.js systemjs-babel-browser.js",
-    "test": "node test/index.js"
-  },
-  "main": "plugin-babel.js",
-  "map": {
-    "systemjs-babel-build": {
-      "node": "./systemjs-babel-node.js",
-      "browser": "./systemjs-babel-browser.js",
-      "default": "./systemjs-babel-browser.js"
-    }
-  },
-  "meta": {
-    "./plugin-babel.js": {
-      "format": "cjs"
-    }
-  },
-  "files": [
-    "plugin-babel.js",
-    "babel-helpers",
-    "babel-helpers.js",
-    "regenerator-runtime.js",
-    "systemjs-babel-browser.js",
-    "systemjs-babel-node.js"
-  ],
   "devDependencies": {
-    "browser-run": "^3.2.0",
-    "systemjs": "^0.20.14",
-    "tape": "^4.6.0"
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-syntax-import-meta": "^7.0.0",
+    "@babel/plugin-transform-modules-systemjs": "^7.0.0",
+    "webpack": "^4.17.1",
+    "webpack-cli": "^3.1.0"
+  },
+  "scripts": {
+    "build": "webpack"
   }
 }
