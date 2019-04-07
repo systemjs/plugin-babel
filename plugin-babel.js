@@ -178,6 +178,7 @@ exports.translate = function(load, traceOpts) {
       sourceMaps: traceOpts && traceOpts.sourceMaps || babelOptions.sourceMaps,
       inputSourceMap: load.metadata.sourceMap,
       compact: babelOptions.compact,
+      retainLines: babelOptions.retainLines,
       comments: babelOptions.comments,
       code: true,
       ast: true,
