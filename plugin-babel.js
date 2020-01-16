@@ -55,6 +55,7 @@ function prepend(a, b) {
  */
 var defaultBabelOptions = {
   modularRuntime: true,
+  moduleIds: false,
   sourceMaps: true,
   es2015: true,
   stage3: true,
@@ -174,7 +175,8 @@ exports.translate = function(load, traceOpts) {
       presets: presets,
       filename: load.address,
       sourceFileName: load.address,
-      moduleIds: false,
+      moduleIds: traceOpts && traceOpts.moduleIds || babelOptions.moduleIds,
+      getModuleId: traceOpts && traceOpts.getModuleId || babelOptions.getModuleId,
       sourceMaps: traceOpts && traceOpts.sourceMaps || babelOptions.sourceMaps,
       inputSourceMap: load.metadata.sourceMap,
       compact: babelOptions.compact,
